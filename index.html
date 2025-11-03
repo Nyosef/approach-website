@@ -781,6 +781,7 @@
             height: auto;
             display: block;
             max-height: 300px;
+            border-radius: 0 0 15px 15px;
         }
 
         .video-player.minimized .video-content video {
@@ -967,8 +968,9 @@
                 </div>
             </div>
             <div class="video-content">
-                <video id="main-video" controls preload="none">
+                <video id="main-video" controls preload="none" poster="">
                     <source src="platform-demo.mp4" type="video/mp4">
+                    <source src="platform-demo.webm" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
                 <div id="video-loading" class="video-loading">
@@ -1317,7 +1319,7 @@
                 });
 
                 this.video.addEventListener('error', () => {
-                    this.loading.innerHTML = '<div style="text-align: center;"><i class="fas fa-exclamation-triangle" style="font-size: 24px; margin-bottom: 10px;"></i><br>Video failed to load<br><small>Please check your connection</small></div>';
+                    this.loading.innerHTML = '<div style="text-align: center; color: white;"><i class="fas fa-exclamation-triangle" style="font-size: 24px; margin-bottom: 10px; color: #ff6b35;"></i><br><strong>Video file not found</strong><br><small>Please add platform-demo.mp4 to your project</small></div>';
                 });
 
                 // Keyboard controls
@@ -1390,8 +1392,8 @@
 
                 // Example: Send to analytics service
                 // gtag('event', 'video_start', {
-                //     'video_title': 'Platform Demo',
-                //     'video_duration': this.video.duration
+                //     'video_title': 'Coaching Transformation',
+                //     'video_provider': 'Local'
                 // });
             }
         }
@@ -1401,20 +1403,6 @@
             new FloatingVideoPlayer();
         });
 
-        // Performance optimization: Preload video metadata on user interaction
-        let userInteracted = false;
-        const preloadVideoMetadata = () => {
-            if (!userInteracted) {
-                userInteracted = true;
-                const video = document.getElementById('main-video');
-                if (video && video.preload === 'none') {
-                    video.preload = 'metadata';
-                }
-            }
-        };
-
-        // Preload on first user interaction
-        ['click', 'scroll', 'keydown', 'touchstart'].forEach(event => {
-            document.addEventListener(event, preloadVideoMetadata, { once: true });
-        });
+        // YouTube video integration is handled by the FloatingVideoPlayer class
+        // No additional preloading needed as YouTube handles optimization automatically
     </script>
