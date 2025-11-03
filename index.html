@@ -625,6 +625,262 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Floating Video Player Styles */
+        .floating-video-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .video-thumbnail {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8a50 100%);
+            border-radius: 15px;
+            padding: 15px 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 280px;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .video-thumbnail.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .video-thumbnail:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        .thumbnail-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+
+        .play-button {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .video-thumbnail:hover .play-button {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .thumbnail-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .thumbnail-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .thumbnail-subtitle {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .video-player {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            width: 400px;
+            max-width: 90vw;
+            display: none;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .video-player.visible {
+            display: block;
+            animation: slideInUp 0.4s ease-out;
+        }
+
+        .video-player.minimized {
+            width: 280px;
+        }
+
+        .video-player.expanded {
+            width: 600px;
+            max-width: 95vw;
+        }
+
+        .video-header {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .video-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .video-controls-header {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 12px;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .video-content {
+            position: relative;
+            background: #000;
+        }
+
+        .video-content video {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 300px;
+        }
+
+        .video-player.minimized .video-content video {
+            max-height: 200px;
+        }
+
+        .video-player.expanded .video-content video {
+            max-height: 400px;
+        }
+
+        .video-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 107, 53, 0.3);
+            border-top: 3px solid #ff6b35;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .floating-video-container {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+            }
+
+            .video-thumbnail {
+                max-width: none;
+                justify-content: center;
+            }
+
+            .video-player {
+                width: 100%;
+                max-width: none;
+            }
+
+            .video-player.minimized {
+                width: 100%;
+            }
+
+            .video-player.expanded {
+                width: 100%;
+            }
+
+            .video-content video {
+                max-height: 250px;
+            }
+
+            .video-player.expanded .video-content video {
+                max-height: 300px;
+            }
+        }
+
+        /* Hide video player initially */
+        .floating-video-container {
+            display: none;
+        }
+
+        .floating-video-container.active {
+            display: block;
+        }
     </style>
 </head>
 
@@ -675,6 +931,53 @@
             </div>
         </div>
     </section>
+
+    <!-- Floating Video Player -->
+    <div id="floating-video-container" class="floating-video-container">
+        <!-- Video Thumbnail/Trigger -->
+        <div id="video-thumbnail" class="video-thumbnail">
+            <div class="thumbnail-content">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div class="thumbnail-text">
+                    <span class="thumbnail-title">Transform Your Coaching</span>
+                    <span class="thumbnail-subtitle">See the future of coaching</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Player -->
+        <div id="video-player" class="video-player">
+            <div class="video-header">
+                <div class="video-title">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Coaching Transformation</span>
+                </div>
+                <div class="video-controls-header">
+                    <button id="minimize-btn" class="control-btn" title="Minimize">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button id="expand-btn" class="control-btn" title="Expand">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button id="close-btn" class="control-btn" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="video-content">
+                <video id="main-video" controls preload="none">
+                    <source src="platform-demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div id="video-loading" class="video-loading">
+                    <div class="loading-spinner"></div>
+                    <span>Loading video...</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Stats Section -->
     <section class="stats scroll-reveal">
@@ -949,5 +1252,169 @@
         // Add loading animation
         window.addEventListener('load', function () {
             document.body.style.opacity = '1';
+        });
+
+        // Floating Video Player Functionality
+        class FloatingVideoPlayer {
+            constructor() {
+                this.container = document.getElementById('floating-video-container');
+                this.thumbnail = document.getElementById('video-thumbnail');
+                this.player = document.getElementById('video-player');
+                this.video = document.getElementById('main-video');
+                this.loading = document.getElementById('video-loading');
+
+                this.minimizeBtn = document.getElementById('minimize-btn');
+                this.expandBtn = document.getElementById('expand-btn');
+                this.closeBtn = document.getElementById('close-btn');
+
+                this.isVideoLoaded = false;
+                this.isVisible = false;
+
+                this.init();
+            }
+
+            init() {
+                this.setupIntersectionObserver();
+                this.setupEventListeners();
+            }
+
+            setupIntersectionObserver() {
+                // Show thumbnail after 1.5 seconds regardless of scroll position
+                setTimeout(() => {
+                    if (!this.isVisible) {
+                        this.showThumbnail();
+                    }
+                }, 1500);
+            }
+
+            setupEventListeners() {
+                // Thumbnail click - load and show video
+                this.thumbnail.addEventListener('click', () => {
+                    this.loadVideo();
+                });
+
+                // Control buttons
+                this.minimizeBtn.addEventListener('click', () => {
+                    this.toggleMinimize();
+                });
+
+                this.expandBtn.addEventListener('click', () => {
+                    this.toggleExpand();
+                });
+
+                this.closeBtn.addEventListener('click', () => {
+                    this.closePlayer();
+                });
+
+                // Video events
+                this.video.addEventListener('loadstart', () => {
+                    this.loading.style.display = 'flex';
+                });
+
+                this.video.addEventListener('canplay', () => {
+                    this.loading.style.display = 'none';
+                    this.isVideoLoaded = true;
+                });
+
+                this.video.addEventListener('error', () => {
+                    this.loading.innerHTML = '<div style="text-align: center;"><i class="fas fa-exclamation-triangle" style="font-size: 24px; margin-bottom: 10px;"></i><br>Video failed to load<br><small>Please check your connection</small></div>';
+                });
+
+                // Keyboard controls
+                document.addEventListener('keydown', (e) => {
+                    if (this.player.classList.contains('visible')) {
+                        if (e.key === 'Escape') {
+                            this.closePlayer();
+                        } else if (e.key === ' ') {
+                            e.preventDefault();
+                            this.togglePlayPause();
+                        }
+                    }
+                });
+            }
+
+            showThumbnail() {
+                this.container.classList.add('active');
+                setTimeout(() => {
+                    this.thumbnail.classList.add('visible');
+                    this.isVisible = true;
+                }, 100);
+            }
+
+            loadVideo() {
+                // Hide thumbnail and show player
+                this.thumbnail.style.display = 'none';
+                this.player.classList.add('visible');
+
+                // Load video if not already loaded
+                if (!this.isVideoLoaded) {
+                    this.video.load();
+                }
+
+                // Track video view (optional analytics)
+                this.trackVideoView();
+            }
+
+            toggleMinimize() {
+                this.player.classList.toggle('minimized');
+                this.player.classList.remove('expanded');
+            }
+
+            toggleExpand() {
+                this.player.classList.toggle('expanded');
+                this.player.classList.remove('minimized');
+            }
+
+            closePlayer() {
+                this.player.classList.remove('visible');
+                this.video.pause();
+
+                // Show thumbnail again after a delay
+                setTimeout(() => {
+                    this.thumbnail.style.display = 'flex';
+                    this.player.classList.remove('minimized', 'expanded');
+                }, 300);
+            }
+
+            togglePlayPause() {
+                if (this.video.paused) {
+                    this.video.play();
+                } else {
+                    this.video.pause();
+                }
+            }
+
+            trackVideoView() {
+                // Optional: Add analytics tracking here
+                console.log('Video view tracked');
+
+                // Example: Send to analytics service
+                // gtag('event', 'video_start', {
+                //     'video_title': 'Platform Demo',
+                //     'video_duration': this.video.duration
+                // });
+            }
+        }
+
+        // Initialize floating video player when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new FloatingVideoPlayer();
+        });
+
+        // Performance optimization: Preload video metadata on user interaction
+        let userInteracted = false;
+        const preloadVideoMetadata = () => {
+            if (!userInteracted) {
+                userInteracted = true;
+                const video = document.getElementById('main-video');
+                if (video && video.preload === 'none') {
+                    video.preload = 'metadata';
+                }
+            }
+        };
+
+        // Preload on first user interaction
+        ['click', 'scroll', 'keydown', 'touchstart'].forEach(event => {
+            document.addEventListener(event, preloadVideoMetadata, { once: true });
         });
     </script>
