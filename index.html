@@ -874,6 +874,34 @@
             }
         }
 
+        /* Desktop Enhancement - 30% larger thumbnail button */
+        @media (min-width: 769px) {
+            .video-thumbnail {
+                max-width: 364px;
+                /* 30% increase from 280px */
+                padding: 20px 26px;
+                /* Scaled padding from 15px 20px */
+            }
+
+            .play-button {
+                width: 65px;
+                /* 30% increase from 50px */
+                height: 65px;
+                font-size: 23px;
+                /* Scaled from 18px */
+            }
+
+            .thumbnail-title {
+                font-size: 18px;
+                /* Scaled from 14px */
+            }
+
+            .thumbnail-subtitle {
+                font-size: 16px;
+                /* Scaled from 12px */
+            }
+        }
+
         /* Hide video player initially */
         .floating-video-container {
             display: none;
@@ -968,7 +996,7 @@
                 </div>
             </div>
             <div class="video-content">
-                <video id="main-video" controls preload="none" poster="">
+                <video id="main-video" controls preload="metadata" poster="">
                     <source src="platform-demo.mp4" type="video/mp4">
                     <source src="platform-demo.webm" type="video/webm">
                     Your browser does not support the video tag.
@@ -1348,13 +1376,45 @@
                 this.thumbnail.style.display = 'none';
                 this.player.classList.add('visible');
 
-                // Load video if not already loaded
+                // Load video if not already loaded and attempt autoplay
                 if (!this.isVideoLoaded) {
                     this.video.load();
+                    // Auto-play when video is ready
+                    this.video.addEventListener('canplay', () => {
+                        this.attemptAutoplay();
+                    }, { once: true });
+                } else {
+                    // Video already loaded, attempt autoplay immediately
+                    this.attemptAutoplay();
                 }
 
                 // Track video view (optional analytics)
                 this.trackVideoView();
+            }
+
+            attemptAutoplay() {
+                // Try to autoplay the video
+                const playPromise = this.video.play();
+
+                if (playPromise !== undefined) {
+                    playPromise
+                        .then(() => {
+                            // Autoplay started successfully
+                            console.log('Video autoplay started');
+                        })
+                        .catch(error => {
+                            // Autoplay was prevented
+                            console.log('Autoplay prevented by browser:', error);
+                            // Video will show with controls for manual play
+                            this.showAutoplayMessage();
+                        });
+                }
+            }
+
+            showAutoplayMessage() {
+                // Optional: Show a brief message that user can click to play
+                // This is handled gracefully by the browser's built-in controls
+                console.log('User interaction required to play video');
             }
 
             toggleMinimize() {
