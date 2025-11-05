@@ -910,6 +910,180 @@
         .floating-video-container.active {
             display: block;
         }
+
+        /* Jennifer Popup Bubble Styles */
+        .jennifer-popup {
+            position: fixed;
+            top: 25%;
+            left: 20px;
+            z-index: 1001;
+            font-family: 'Inter', sans-serif;
+            opacity: 0;
+            transform: translateX(-20px);
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .jennifer-popup.visible {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: all;
+        }
+
+        .popup-bubble {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8a50 100%);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+            max-width: 280px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .popup-bubble:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 45px rgba(255, 107, 53, 0.5);
+        }
+
+        .popup-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid #ff6b35;
+            filter: drop-shadow(0 5px 10px rgba(255, 107, 53, 0.3));
+        }
+
+        .popup-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .popup-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            backdrop-filter: blur(10px);
+            flex-shrink: 0;
+        }
+
+        .popup-text {
+            flex: 1;
+        }
+
+        .popup-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .popup-subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+            line-height: 1.2;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .popup-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Video Player Tabs */
+        .video-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin: 8px 12px;
+            overflow: hidden;
+        }
+
+        .video-tab {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .video-tab.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .video-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Mobile Responsive for Popup */
+        @media (max-width: 768px) {
+            .jennifer-popup {
+                top: 15%;
+                left: 10px;
+                right: 10px;
+            }
+
+            .popup-bubble {
+                max-width: none;
+                padding: 18px 20px;
+            }
+
+            .popup-bubble::after {
+                left: 25px;
+            }
+
+            .popup-title {
+                font-size: 15px;
+            }
+
+            .popup-subtitle {
+                font-size: 12px;
+            }
+
+            .popup-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 
@@ -961,6 +1135,24 @@
         </div>
     </section>
 
+    <!-- Jennifer Popup -->
+    <div id="jennifer-popup" class="jennifer-popup">
+        <div class="popup-bubble" id="popup-bubble">
+            <button class="popup-close" id="popup-close" title="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-content">
+                <div class="popup-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="popup-text">
+                    <div class="popup-title">Would you like to hear more from our Jennifer?</div>
+                    <div class="popup-subtitle">Exclusive coaching insights</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating Video Player -->
     <div id="floating-video-container" class="floating-video-container">
         <!-- Video Thumbnail/Trigger -->
@@ -981,7 +1173,7 @@
             <div class="video-header">
                 <div class="video-title">
                     <i class="fas fa-play-circle"></i>
-                    <span>Coaching Transformation</span>
+                    <span id="current-video-title">Platform Demo</span>
                 </div>
                 <div class="video-controls-header">
                     <button id="minimize-btn" class="control-btn" title="Minimize">
@@ -995,10 +1187,22 @@
                     </button>
                 </div>
             </div>
+            <div class="video-tabs">
+                <button class="video-tab active" id="platform-tab" data-video="platform">
+                    Platform Demo
+                </button>
+                <button class="video-tab" id="jennifer-tab" data-video="jennifer">
+                    Jennifer's Insights
+                </button>
+            </div>
             <div class="video-content">
                 <video id="main-video" controls preload="metadata" poster="">
                     <source src="platform-demo.mp4" type="video/mp4">
                     <source src="platform-demo.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <video id="jennifer-video" controls preload="none" poster="" style="display: none;">
+                    <source src="output_jennifer_compressed.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <div id="video-loading" class="video-loading">
@@ -1284,21 +1488,123 @@
             document.body.style.opacity = '1';
         });
 
-        // Floating Video Player Functionality
+        // Engagement Tracker Class
+        class EngagementTracker {
+            constructor() {
+                this.startTime = Date.now();
+                this.hasScrolled = false;
+                this.popupShown = false;
+                this.init();
+            }
+
+            init() {
+                this.setupScrollListener();
+                this.startTimer();
+            }
+
+            setupScrollListener() {
+                let scrollTimeout;
+                window.addEventListener('scroll', () => {
+                    if (!this.hasScrolled) {
+                        this.hasScrolled = true;
+                        console.log('User has scrolled - engagement detected');
+                    }
+
+                    // Clear existing timeout and set new one
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        this.checkEngagementCriteria();
+                    }, 100);
+                });
+            }
+
+            startTimer() {
+                // Check every second if criteria are met
+                this.timerInterval = setInterval(() => {
+                    this.checkEngagementCriteria();
+                }, 1000);
+            }
+
+            checkEngagementCriteria() {
+                const timeElapsed = Date.now() - this.startTime;
+                const twelveSeconds = 12000; // 12 seconds in milliseconds
+
+                if (!this.popupShown && timeElapsed >= twelveSeconds && this.hasScrolled) {
+                    this.showJenniferPopup();
+                    this.popupShown = true;
+                    clearInterval(this.timerInterval);
+                    console.log('Jennifer popup triggered - 12 seconds + scroll detected');
+                }
+            }
+
+            showJenniferPopup() {
+                const popup = document.getElementById('jennifer-popup');
+                if (popup) {
+                    popup.classList.add('visible');
+                }
+            }
+        }
+
+        // Jennifer Popup Class
+        class JenniferPopup {
+            constructor() {
+                this.popup = document.getElementById('jennifer-popup');
+                this.popupBubble = document.getElementById('popup-bubble');
+                this.closeBtn = document.getElementById('popup-close');
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+            }
+
+            setupEventListeners() {
+                // Close button
+                this.closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.hidePopup();
+                });
+
+                // Popup bubble click - show Jennifer video
+                this.popupBubble.addEventListener('click', () => {
+                    this.showJenniferVideo();
+                });
+            }
+
+            hidePopup() {
+                this.popup.classList.remove('visible');
+            }
+
+            showJenniferVideo() {
+                // Get the video player instance and switch to Jennifer tab
+                if (window.videoPlayer) {
+                    window.videoPlayer.showPlayerWithJenniferVideo();
+                }
+            }
+        }
+
+        // Enhanced Floating Video Player Class
         class FloatingVideoPlayer {
             constructor() {
                 this.container = document.getElementById('floating-video-container');
                 this.thumbnail = document.getElementById('video-thumbnail');
                 this.player = document.getElementById('video-player');
-                this.video = document.getElementById('main-video');
+                this.mainVideo = document.getElementById('main-video');
+                this.jenniferVideo = document.getElementById('jennifer-video');
                 this.loading = document.getElementById('video-loading');
+                this.currentVideoTitle = document.getElementById('current-video-title');
 
                 this.minimizeBtn = document.getElementById('minimize-btn');
                 this.expandBtn = document.getElementById('expand-btn');
                 this.closeBtn = document.getElementById('close-btn');
 
-                this.isVideoLoaded = false;
+                this.platformTab = document.getElementById('platform-tab');
+                this.jenniferTab = document.getElementById('jennifer-tab');
+
+                this.isMainVideoLoaded = false;
+                this.isJenniferVideoLoaded = false;
                 this.isVisible = false;
+                this.currentVideo = 'platform';
 
                 this.init();
             }
@@ -1306,6 +1612,8 @@
             init() {
                 this.setupIntersectionObserver();
                 this.setupEventListeners();
+                // Make this instance globally available
+                window.videoPlayer = this;
             }
 
             setupIntersectionObserver() {
@@ -1336,18 +1644,55 @@
                     this.closePlayer();
                 });
 
-                // Video events
-                this.video.addEventListener('loadstart', () => {
-                    this.loading.style.display = 'flex';
+                // Tab buttons
+                this.platformTab.addEventListener('click', () => {
+                    this.switchToVideo('platform');
                 });
 
-                this.video.addEventListener('canplay', () => {
-                    this.loading.style.display = 'none';
-                    this.isVideoLoaded = true;
+                this.jenniferTab.addEventListener('click', () => {
+                    this.switchToVideo('jennifer');
                 });
 
-                this.video.addEventListener('error', () => {
-                    this.loading.innerHTML = '<div style="text-align: center; color: white;"><i class="fas fa-exclamation-triangle" style="font-size: 24px; margin-bottom: 10px; color: #ff6b35;"></i><br><strong>Video file not found</strong><br><small>Please add platform-demo.mp4 to your project</small></div>';
+                // Main video events
+                this.mainVideo.addEventListener('loadstart', () => {
+                    if (this.currentVideo === 'platform') {
+                        this.loading.style.display = 'flex';
+                    }
+                });
+
+                this.mainVideo.addEventListener('canplay', () => {
+                    if (this.currentVideo === 'platform') {
+                        this.loading.style.display = 'none';
+                    }
+                    this.isMainVideoLoaded = true;
+                    // Preload Jennifer video after main video is ready
+                    this.preloadJenniferVideo();
+                });
+
+                this.mainVideo.addEventListener('error', () => {
+                    if (this.currentVideo === 'platform') {
+                        this.loading.innerHTML = '<div style="text-align: center; color: white;"><i class="fas fa-exclamation-triangle" style="font-size: 24px; margin-bottom: 10px; color: #ff6b35;"></i><br><strong>Video file not found</strong><br><small>Please add platform-demo.mp4 to your project</small></div>';
+                    }
+                });
+
+                // Jennifer video events
+                this.jenniferVideo.addEventListener('loadstart', () => {
+                    if (this.currentVideo === 'jennifer') {
+                        this.loading.style.display = 'flex';
+                    }
+                });
+
+                this.jenniferVideo.addEventListener('canplay', () => {
+                    if (this.currentVideo === 'jennifer') {
+                        this.loading.style.display = 'none';
+                    }
+                    this.isJenniferVideoLoaded = true;
+                });
+
+                this.jenniferVideo.addEventListener('error', () => {
+                    if (this.currentVideo === 'jennifer') {
+                        this.loading.innerHTML = '<div style="text-align: center; color: white;"><i class="fas fa-exclamation-triangle" style="font-size: 24px; margin-bottom: 10px; color: #ff6b35;"></i><br><strong>Jennifer video not found</strong><br><small>Please add output_jennifer_compressed.mp4 to your project</small></div>';
+                    }
                 });
 
                 // Keyboard controls
@@ -1363,6 +1708,13 @@
                 });
             }
 
+            preloadJenniferVideo() {
+                if (!this.isJenniferVideoLoaded) {
+                    this.jenniferVideo.preload = 'metadata';
+                    this.jenniferVideo.load();
+                }
+            }
+
             showThumbnail() {
                 this.container.classList.add('active');
                 setTimeout(() => {
@@ -1376,11 +1728,11 @@
                 this.thumbnail.style.display = 'none';
                 this.player.classList.add('visible');
 
-                // Load video if not already loaded and attempt autoplay
-                if (!this.isVideoLoaded) {
-                    this.video.load();
+                // Load main video if not already loaded and attempt autoplay
+                if (!this.isMainVideoLoaded) {
+                    this.mainVideo.load();
                     // Auto-play when video is ready
-                    this.video.addEventListener('canplay', () => {
+                    this.mainVideo.addEventListener('canplay', () => {
                         this.attemptAutoplay();
                     }, { once: true });
                 } else {
@@ -1392,15 +1744,60 @@
                 this.trackVideoView();
             }
 
+            showPlayerWithJenniferVideo() {
+                // Show the player if not visible
+                if (!this.player.classList.contains('visible')) {
+                    this.thumbnail.style.display = 'none';
+                    this.player.classList.add('visible');
+                }
+
+                // Switch to Jennifer tab
+                this.switchToVideo('jennifer');
+
+                // Attempt autoplay
+                setTimeout(() => {
+                    this.attemptAutoplay();
+                }, 500);
+            }
+
+            switchToVideo(videoType) {
+                // Pause current video
+                this.getCurrentVideoElement().pause();
+
+                // Update current video
+                this.currentVideo = videoType;
+
+                // Update tabs
+                this.platformTab.classList.toggle('active', videoType === 'platform');
+                this.jenniferTab.classList.toggle('active', videoType === 'jennifer');
+
+                // Update video visibility
+                this.mainVideo.style.display = videoType === 'platform' ? 'block' : 'none';
+                this.jenniferVideo.style.display = videoType === 'jennifer' ? 'block' : 'none';
+
+                // Update title
+                this.currentVideoTitle.textContent = videoType === 'platform' ? 'Platform Demo' : "Jennifer's Insights";
+
+                // Load Jennifer video if switching to it and not loaded
+                if (videoType === 'jennifer' && !this.isJenniferVideoLoaded) {
+                    this.jenniferVideo.load();
+                }
+            }
+
+            getCurrentVideoElement() {
+                return this.currentVideo === 'platform' ? this.mainVideo : this.jenniferVideo;
+            }
+
             attemptAutoplay() {
-                // Try to autoplay the video
-                const playPromise = this.video.play();
+                // Try to autoplay the current video
+                const currentVideoEl = this.getCurrentVideoElement();
+                const playPromise = currentVideoEl.play();
 
                 if (playPromise !== undefined) {
                     playPromise
                         .then(() => {
                             // Autoplay started successfully
-                            console.log('Video autoplay started');
+                            console.log(`${this.currentVideo} video autoplay started`);
                         })
                         .catch(error => {
                             // Autoplay was prevented
@@ -1429,7 +1826,7 @@
 
             closePlayer() {
                 this.player.classList.remove('visible');
-                this.video.pause();
+                this.getCurrentVideoElement().pause();
 
                 // Show thumbnail again after a delay
                 setTimeout(() => {
@@ -1439,30 +1836,30 @@
             }
 
             togglePlayPause() {
-                if (this.video.paused) {
-                    this.video.play();
+                const currentVideoEl = this.getCurrentVideoElement();
+                if (currentVideoEl.paused) {
+                    currentVideoEl.play();
                 } else {
-                    this.video.pause();
+                    currentVideoEl.pause();
                 }
             }
 
             trackVideoView() {
                 // Optional: Add analytics tracking here
-                console.log('Video view tracked');
+                console.log(`${this.currentVideo} video view tracked`);
 
                 // Example: Send to analytics service
                 // gtag('event', 'video_start', {
-                //     'video_title': 'Coaching Transformation',
+                //     'video_title': this.currentVideo === 'platform' ? 'Platform Demo' : 'Jennifer Insights',
                 //     'video_provider': 'Local'
                 // });
             }
         }
 
-        // Initialize floating video player when DOM is loaded
+        // Initialize all components when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
+            new EngagementTracker();
+            new JenniferPopup();
             new FloatingVideoPlayer();
         });
-
-        // YouTube video integration is handled by the FloatingVideoPlayer class
-        // No additional preloading needed as YouTube handles optimization automatically
     </script>
