@@ -1,0 +1,23 @@
+{
+    "name": "Approach App - Transform Your Coaching Business",
+    "short_name": "Approach App",
+    "description": "Help your clients master cold approach while building recurring revenue and deeper client relationships",
+    "icons": [
+        {
+            "src": "approach_logo_new.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#ff6b35",
+    "background_color": "#1a237e",
+    "orientation": "portrait-primary"
+}

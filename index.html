@@ -8,6 +8,33 @@
     <meta name="description"
         content="Help your clients master cold approach while building recurring revenue and deeper client relationships with the Approach App.">
 
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="approach_logo_new.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="approach_logo_new.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="approach_logo_new.svg">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#ff6b35">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://approachcoachapp.com/">
+    <meta property="og:title" content="Approach App - Transform Your Coaching Business">
+    <meta property="og:description"
+        content="Help your clients master cold approach while building recurring revenue and deeper client relationships with the Approach App.">
+    <meta property="og:image" content="https://approachcoachapp.com/approach_logo_new.svg">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:site_name" content="Approach App">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://approachcoachapp.com/">
+    <meta property="twitter:title" content="Approach App - Transform Your Coaching Business">
+    <meta property="twitter:description"
+        content="Help your clients master cold approach while building recurring revenue and deeper client relationships with the Approach App.">
+    <meta property="twitter:image" content="https://approachcoachapp.com/approach_logo_new.svg">
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -47,9 +74,35 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 28px;
             font-weight: 800;
             color: #ff6b35;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            line-height: 1;
+        }
+
+        /* Mobile responsive logo */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 24px;
+                gap: 10px;
+            }
+
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+            }
         }
 
         .social-links {
@@ -1092,7 +1145,10 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <div class="logo">APPROACH</div>
+                <div class="logo">
+                    <img src="approach_logo_new.svg" alt="Approach App Logo" class="logo-icon">
+                    <span class="logo-text">APPROACH</span>
+                </div>
                 <div class="social-links">
                     <a href="https://www.instagram.com/approachcoachapp/" target="_blank" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
