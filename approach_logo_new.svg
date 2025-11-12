@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title>Orange Square App Icon with White Lightning</title>
+  <desc>A rounded orange square with a bold white lightning bolt centered.</desc>
+
+  <!-- Background: rounded orange square with a subtle vertical gradient -->
+  <defs>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF8A00"/>
+      <stop offset="100%" stop-color="#FF5E00"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Safe padding -->
+  <rect x="64" y="64" width="896" height="896" rx="180" ry="180" fill="url(#orangeGrad)"/>
+
+  <!-- Optional soft top highlight -->
+  <path d="M128 128 h768 a0 0 0 0 1 0 0 v160 a0 0 0 0 1 0 0 h-768 a0 0 0 0 1 0 0 z" fill="#FFFFFF" opacity="0.08"/>
+
+  <!-- White lightning bolt -->
+  <polygon fill="#FFFFFF" points="
+    590,184
+    402,566
+    548,566
+    456,840
+    730,438
+    570,438
+  "/>
+</svg>
