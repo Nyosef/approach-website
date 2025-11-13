@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Safety Policy - Approach Coach</title>
+    <meta name="description"
+        content="Child Safety Policy for Approach Coach - Our zero tolerance policy for child sexual abuse and exploitation (CSAE).">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            position: relative;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ff6b35;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #ff6b35;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px 0 80px;
+        }
+
+        .safety-content {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #1a237e;
+        }
+
+        .effective-date {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .zero-tolerance-banner {
+            background: linear-gradient(135deg, #d32f2f 0%, #f44336 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .zero-tolerance-banner i {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .contact-email {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .contact-email strong {
+            color: #1a237e;
+        }
+
+        .emergency-contact {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .emergency-contact h4 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .emergency-contact .phone {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #d32f2f;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 30px 0 15px 0;
+            color: #1a237e;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+            color: #283593;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin: 15px 0 15px 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #ff6b35;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight-box {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .highlight-box h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box h4 {
+            color: #f57c00;
+            margin-bottom: 10px;
+        }
+
+        .reporting-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .reporting-method {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .reporting-method i {
+            font-size: 2rem;
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .reporting-method h4 {
+            color: #1a237e;
+            margin-bottom: 10px;
+        }
+
+        .prohibited-list {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .prohibited-list h4 {
+            color: #d32f2f;
+            margin-bottom: 15px;
+        }
+
+        .prohibited-list ul {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .prohibited-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .prohibited-list li::before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .footer p {
+            opacity: 0.7;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b35;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .safety-content {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .reporting-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">APPROACH</a>
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="safety-content">
+                <h1>Child Safety Policy</h1>
+                <p class="effective-date">Effective Date: November 13, 2025</p>
+
+                <div class="zero-tolerance-banner">
+                    <i class="fas fa-shield-alt"></i>
+                    <strong>ZERO TOLERANCE POLICY</strong><br>
+                    Approach Coach maintains absolute zero tolerance for child sexual abuse and exploitation (CSAE)
+                </div>
+
+                <div class="contact-email">
+                    <strong>Report Safety Concerns:</strong> <a
+                        href="mailto:triumphserum@gmail.com">triumphserum@gmail.com</a>
+                </div>
+
+                <h2>1. Our Commitment to Child Safety</h2>
+                <p><strong>Approach Coach</strong>, developed by <strong>Triumph Joe</strong>, is committed to providing
+                    a safe environment for all users. We maintain zero tolerance for child sexual abuse and exploitation
+                    (CSAE) in any form.</p>
+
+                <p>This policy outlines our comprehensive approach to preventing, detecting, and responding to any
+                    content or behavior that could harm children or facilitate child exploitation.</p>
+
+                <div class="prohibited-list">
+                    <h4>Strictly Prohibited Content and Behavior</h4>
+                    <ul>
+                        <li>Any form of child sexual abuse material (CSAM)</li>
+                        <li>Child exploitation or endangerment content</li>
+                        <li>Grooming behavior or attempts to establish inappropriate contact with minors</li>
+                        <li>Sexualization of minors in any form</li>
+                        <li>Content that promotes, encourages, or facilitates child abuse</li>
+                        <li>Sharing, distributing, or possessing illegal content involving minors</li>
+                        <li>Using our platform to arrange meetings with minors for inappropriate purposes</li>
+                        <li>Any content that depicts, promotes, or glorifies child abuse</li>
+                        <li>Attempts to use our coaching services to target or exploit minors</li>
+                    </ul>
+                </div>
+
+                <h2>2. Age Restrictions and Verification</h2>
+                <p>Approach Coach is designed exclusively for adults aged 18 and over. We implement the following
+                    measures:</p>
+                <ul>
+                    <li>Clear age restrictions in our terms of service</li>
+                    <li>Age verification during account creation</li>
+                    <li>Regular monitoring for underage users</li>
+                    <li>Immediate account suspension for users found to be under 18</li>
+                </ul>
+
+                <h2>3. Reporting Mechanisms</h2>
+                <p>We provide multiple ways for users and the public to report safety concerns:</p>
+
+                <div class="reporting-methods">
+                    <div class="reporting-method">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email Report</h4>
+                        <p><a href="mailto:triumphserum@gmail.com">triumphserum@gmail.com</a></p>
+                        <p><small>Include "SAFETY REPORT" in subject line</small></p>
+                    </div>
+                    <div class="reporting-method">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h4>In-App Report</h4>
+                        <p>Use the report button within the app</p>
+                        <p><small>Available on all user profiles and content</small></p>
+                    </div>
+                    <div class="reporting-method">
+                        <i class="fas fa-phone"></i>
+                        <h4>Emergency Situations</h4>
+                        <p>Contact local law enforcement immediately</p>
+                        <p><small>For immediate threats to child safety</small></p>
+                    </div>
+                </div>
+
+                <div class="emergency-contact">
+                    <h4>Emergency Resources</h4>
+                    <p>If you believe a child is in immediate danger, contact:</p>
+                    <p class="phone">🇺🇸 National Child Abuse Hotline: 1-800-4-A-CHILD (1-800-422-4453)</p>
+                    <p class="phone">🚨 Emergency Services: 911 (US) or your local emergency number</p>
+                </div>
+
+                <h2>4. Response Procedures</h2>
+                <p>When we receive reports of potential CSAE content or behavior, we take immediate action:</p>
+
+                <h3>Immediate Response (Within 1 Hour)</h3>
+                <ul>
+                    <li>Suspend reported accounts pending investigation</li>
+                    <li>Remove reported content immediately</li>
+                    <li>Preserve evidence for law enforcement</li>
+                    <li>Notify relevant authorities if required by law</li>
+                </ul>
+
+                <h3>Investigation Process (Within 24 Hours)</h3>
+                <ul>
+                    <li>Thorough review of reported content and user behavior</li>
+                    <li>Analysis of user patterns and connections</li>
+                    <li>Coordination with law enforcement when appropriate</li>
+                    <li>Documentation of all findings</li>
+                </ul>
+
+                <h3>Follow-up Actions</h3>
+                <ul>
+                    <li>Permanent account termination for confirmed violations</li>
+                    <li>Reporting to National Center for Missing & Exploited Children (NCMEC) when required</li>
+                    <li>Cooperation with law enforcement investigations</li>
+                    <li>Implementation of additional safety measures as needed</li>
+                </ul>
+
+                <h2>5. Prevention and Detection</h2>
+                <p>Approach Coach employs multiple layers of protection:</p>
+
+                <h3>Automated Systems</h3>
+                <ul>
+                    <li>Content scanning and filtering technology</li>
+                    <li>Behavioral pattern analysis</li>
+                    <li>Automated flagging of suspicious activity</li>
+                    <li>Regular system updates and improvements</li>
+                </ul>
+
+                <h3>Human Moderation</h3>
+                <ul>
+                    <li>Trained safety specialists review flagged content</li>
+                    <li>Regular audits of user interactions</li>
+                    <li>Proactive monitoring of high-risk areas</li>
+                    <li>Continuous staff training on child safety issues</li>
+                </ul>
+
+                <h2>6. Legal Compliance and Cooperation</h2>
+                <p>Approach Coach fully complies with all applicable laws regarding child safety:</p>
+
+                <ul>
+                    <li><strong>FOSTA-SESTA:</strong> Full compliance with federal anti-trafficking laws</li>
+                    <li><strong>NCMEC Reporting:</strong> Mandatory reporting of CSAM to the National Center for Missing
+                        & Exploited Children</li>
+                    <li><strong>International Cooperation:</strong> Working with global law enforcement agencies</li>
+                    <li><strong>Legal Preservation:</strong> Maintaining evidence for legal proceedings</li>
+                </ul>
+
+                <div class="warning-box">
+                    <h4>Legal Consequences</h4>
+                    <p>Violations of this policy may result in:</p>
+                    <ul>
+                        <li>Immediate and permanent account termination</li>
+                        <li>Reporting to law enforcement agencies</li>
+                        <li>Criminal prosecution under applicable laws</li>
+                        <li>Civil liability for damages</li>
+                    </ul>
+                </div>
+
+                <h2>7. User Education and Awareness</h2>
+                <p>We believe education is key to prevention:</p>
+                <ul>
+                    <li>Clear community guidelines regarding appropriate behavior</li>
+                    <li>Regular safety reminders and updates</li>
+                    <li>Resources for recognizing and reporting suspicious behavior</li>
+                    <li>Training for coaches on identifying potential risks</li>
+                </ul>
+
+                <h2>8. Third-Party Services and Partners</h2>
+                <p>All third-party services integrated with Approach Coach must:</p>
+                <ul>
+                    <li>Maintain equivalent child safety standards</li>
+                    <li>Provide transparency in their safety practices</li>
+                    <li>Cooperate with safety investigations</li>
+                    <li>Implement appropriate content filtering</li>
+                </ul>
+
+                <h2>9. Regular Review and Updates</h2>
+                <p>This Child Safety Policy is reviewed and updated regularly to ensure:</p>
+                <ul>
+                    <li>Compliance with evolving legal requirements</li>
+                    <li>Implementation of best practices and new technologies</li>
+                    <li>Response to emerging threats and trends</li>
+                    <li>Continuous improvement of safety measures</li>
+                </ul>
+
+                <h2>10. Transparency and Accountability</h2>
+                <p>Approach Coach is committed to transparency in our child safety efforts:</p>
+                <ul>
+                    <li>Regular publication of safety statistics (when legally permissible)</li>
+                    <li>Participation in industry safety initiatives</li>
+                    <li>Collaboration with child safety organizations</li>
+                    <li>Open communication with our user community about safety measures</li>
+                </ul>
+
+                <h2>11. Support for Survivors</h2>
+                <p>We recognize the importance of supporting survivors of child abuse:</p>
+                <ul>
+                    <li>Providing resources and referrals to support organizations</li>
+                    <li>Ensuring sensitive handling of reports from survivors</li>
+                    <li>Maintaining confidentiality and privacy protections</li>
+                    <li>Offering assistance in connecting with appropriate services</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Support Resources</h4>
+                    <p><strong>RAINN National Sexual Assault Hotline:</strong> 1-800-656-HOPE (4673)</p>
+                    <p><strong>Childhelp National Child Abuse Hotline:</strong> 1-800-422-4453</p>
+                    <p><strong>Crisis Text Line:</strong> Text HOME to 741741</p>
+                </div>
+
+                <h2>12. Contact Information</h2>
+                <p>For any questions about this Child Safety Policy or to report safety concerns:</p>
+
+                <div class="highlight-box">
+                    <h4>Safety Contact Information</h4>
+                    <p><strong>Email:</strong> <a href="mailto:triumphserum@gmail.com">triumphserum@gmail.com</a></p>
+                    <p><strong>Subject Line for Reports:</strong> "CHILD SAFETY REPORT"</p>
+                    <p><strong>Developer:</strong> Triumph Joe</p>
+                    <p><strong>App:</strong> Approach Coach</p>
+                </div>
+
+                <div class="emergency-contact">
+                    <h4>Remember: If a child is in immediate danger, contact emergency services immediately</h4>
+                    <p>This policy supplements but does not replace the need for immediate emergency response when a
+                        child's safety is at risk.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Approach Coach. Committed to user safety and child protection.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="child-safety-policy.html">Child Safety Policy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
