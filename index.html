@@ -109,6 +109,7 @@
             display: flex;
             gap: 20px;
             align-items: center;
+            position: relative;
         }
 
         .social-links a {
@@ -126,6 +127,140 @@
             height: 30px;
             background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
             margin: 0 10px;
+        }
+
+        /* Social dropdown styles */
+        .social-dropdown {
+            position: relative;
+            display: none;
+        }
+
+        .social-dropdown-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            transition: color 0.3s ease;
+        }
+
+        .social-dropdown-toggle:hover {
+            color: #ff6b35;
+        }
+
+        .social-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(26, 35, 126, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 10px 0;
+            min-width: 150px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            margin-top: 10px;
+        }
+
+        .social-dropdown.active .social-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .social-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.2s ease;
+        }
+
+        .social-dropdown-menu a:hover {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+        }
+
+        .social-dropdown-menu span {
+            font-size: 14px;
+        }
+
+        /* Progressive hiding of social links */
+        @media (max-width: 768px) {
+            .social-links {
+                gap: 15px;
+            }
+
+            .social-links a {
+                font-size: 20px;
+            }
+
+            .social-divider {
+                height: 25px;
+                margin: 0 8px;
+            }
+        }
+
+        /* Hide email first */
+        @media (max-width: 560px) {
+            .social-email {
+                display: none;
+            }
+
+            .social-dropdown {
+                display: block;
+            }
+
+            .dropdown-email {
+                display: flex;
+            }
+
+            .dropdown-linkedin,
+            .dropdown-tiktok,
+            .dropdown-instagram {
+                display: none;
+            }
+        }
+
+        /* Hide LinkedIn next */
+        @media (max-width: 500px) {
+            .social-linkedin {
+                display: none;
+            }
+
+            .dropdown-linkedin {
+                display: flex;
+            }
+        }
+
+        /* Hide TikTok next */
+        @media (max-width: 440px) {
+            .social-tiktok {
+                display: none;
+            }
+
+            .dropdown-tiktok {
+                display: flex;
+            }
+        }
+
+        /* Hide Instagram last */
+        @media (max-width: 390px) {
+            .social-instagram {
+                display: none;
+            }
+
+            .dropdown-instagram {
+                display: flex;
+            }
         }
 
         /* Hero Section */
@@ -656,6 +791,15 @@
             .social-links {
                 gap: 15px;
             }
+
+            .social-links a {
+                font-size: 20px;
+            }
+
+            .social-divider {
+                height: 25px;
+                margin: 0 8px;
+            }
         }
 
         /* Animations */
@@ -710,6 +854,32 @@
             opacity: 0;
             transform: translateY(20px);
             pointer-events: none;
+            position: relative;
+        }
+
+        .video-thumbnail-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .video-thumbnail-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
         }
 
         .video-thumbnail.visible {
@@ -1060,26 +1230,26 @@
 
         .popup-close {
             position: absolute;
-            top: 8px;
-            right: 12px;
+            top: 5px;
+            right: 8px;
             background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 16px;
             transition: all 0.2s ease;
             backdrop-filter: blur(10px);
         }
 
         .popup-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.15);
         }
 
         /* Video Player Tabs */
@@ -1158,19 +1328,50 @@
                     <span class="logo-text">APPROACH</span>
                 </div>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/approachcoachapp/" target="_blank" aria-label="Instagram">
+                    <a href="https://www.instagram.com/approachcoachapp/" target="_blank" aria-label="Instagram"
+                        class="social-link social-instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.tiktok.com/@approach.coach" target="_blank" aria-label="TikTok">
+                    <a href="https://www.tiktok.com/@approach.coach" target="_blank" aria-label="TikTok"
+                        class="social-link social-tiktok">
                         <i class="fab fa-tiktok"></i>
                     </a>
                     <a href="https://www.linkedin.com/company/109572940/admin/dashboard/" target="_blank"
-                        aria-label="LinkedIn">
+                        aria-label="LinkedIn" class="social-link social-linkedin">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="mailto:triumphserum@gmail.com" aria-label="Email">
+                    <a href="mailto:triumphserum@gmail.com" aria-label="Email" class="social-link social-email">
                         <i class="fas fa-envelope"></i>
                     </a>
+
+                    <!-- Three dots dropdown -->
+                    <div class="social-dropdown">
+                        <button class="social-dropdown-toggle" aria-label="More social links">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                        <div class="social-dropdown-menu">
+                            <a href="mailto:triumphserum@gmail.com" aria-label="Email" class="dropdown-email">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/109572940/admin/dashboard/" target="_blank"
+                                aria-label="LinkedIn" class="dropdown-linkedin">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://www.tiktok.com/@approach.coach" target="_blank" aria-label="TikTok"
+                                class="dropdown-tiktok">
+                                <i class="fab fa-tiktok"></i>
+                                <span>TikTok</span>
+                            </a>
+                            <a href="https://www.instagram.com/approachcoachapp/" target="_blank" aria-label="Instagram"
+                                class="dropdown-instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="social-divider"></div>
                     <a href="https://apps.apple.com/il/app/approach-coach/id6752607325" target="_blank"
                         aria-label="iOS App">
@@ -1234,6 +1435,9 @@
     <div id="floating-video-container" class="floating-video-container">
         <!-- Video Thumbnail/Trigger -->
         <div id="video-thumbnail" class="video-thumbnail">
+            <button id="video-thumbnail-close" class="video-thumbnail-close" title="Close">
+                <i class="fas fa-times"></i>
+            </button>
             <div class="thumbnail-content">
                 <div class="play-button">
                     <i class="fas fa-play"></i>
@@ -1611,13 +1815,13 @@
 
             checkEngagementCriteria() {
                 const timeElapsed = Date.now() - this.startTime;
-                const twelveSeconds = 12000; // 12 seconds in milliseconds
+                const twentySeconds = 20000; // 20 seconds in milliseconds
 
-                if (!this.popupShown && timeElapsed >= twelveSeconds && this.hasScrolled) {
+                if (!this.popupShown && timeElapsed >= twentySeconds && this.hasScrolled) {
                     this.showJenniferPopup();
                     this.popupShown = true;
                     clearInterval(this.timerInterval);
-                    console.log('Jennifer popup triggered - 12 seconds + scroll detected');
+                    console.log('Jennifer popup triggered - 20 seconds + scroll detected');
                 }
             }
 
@@ -1711,9 +1915,22 @@
 
             setupEventListeners() {
                 // Thumbnail click - load and show video
-                this.thumbnail.addEventListener('click', () => {
+                this.thumbnail.addEventListener('click', (e) => {
+                    // Don't trigger if clicking the close button
+                    if (e.target.closest('.video-thumbnail-close')) {
+                        return;
+                    }
                     this.loadVideo();
                 });
+
+                // Thumbnail close button
+                const thumbnailCloseBtn = document.getElementById('video-thumbnail-close');
+                if (thumbnailCloseBtn) {
+                    thumbnailCloseBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.hideThumbnail();
+                    });
+                }
 
                 // Control buttons
                 this.minimizeBtn.addEventListener('click', () => {
@@ -1938,6 +2155,58 @@
                 //     'video_provider': 'Local'
                 // });
             }
+
+            hideThumbnail() {
+                this.thumbnail.classList.remove('visible');
+                this.container.classList.remove('active');
+                this.isVisible = false;
+            }
+        }
+
+        // Social Dropdown Handler
+        class SocialDropdown {
+            constructor() {
+                this.dropdown = document.querySelector('.social-dropdown');
+                this.toggle = document.querySelector('.social-dropdown-toggle');
+                this.menu = document.querySelector('.social-dropdown-menu');
+                this.init();
+            }
+
+            init() {
+                if (!this.dropdown || !this.toggle || !this.menu) return;
+
+                this.setupEventListeners();
+            }
+
+            setupEventListeners() {
+                // Toggle dropdown on click
+                this.toggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.toggleDropdown();
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!this.dropdown.contains(e.target)) {
+                        this.closeDropdown();
+                    }
+                });
+
+                // Close dropdown on escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeDropdown();
+                    }
+                });
+            }
+
+            toggleDropdown() {
+                this.dropdown.classList.toggle('active');
+            }
+
+            closeDropdown() {
+                this.dropdown.classList.remove('active');
+            }
         }
 
         // Initialize all components when DOM is loaded
@@ -1945,5 +2214,6 @@
             new EngagementTracker();
             new JenniferPopup();
             new FloatingVideoPlayer();
+            new SocialDropdown();
         });
     </script>
