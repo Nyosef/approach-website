@@ -26,7 +26,7 @@ Simply open `index.html` in any web browser to view the landing page.
 
 ## Contact Information
 
-- Email: triumphserum@gmail.com
+- Email: joe@approach-coach.com
 - Instagram: @approachcoachapp
 - LinkedIn: Nir Joseph
 
