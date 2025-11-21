@@ -28,7 +28,7 @@ Simply open `index.html` in any web browser to view the landing page.
 
 - Email: joe@approach-coach.com
 - Instagram: @approachcoachapp
-- LinkedIn: Nir Joseph
+- LinkedIn: Triumph Joe
 
 ## Technology Stack
 
