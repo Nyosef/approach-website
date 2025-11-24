@@ -1315,6 +1315,402 @@
                 font-size: 18px;
             }
         }
+
+        /* Sound Button Styles */
+        .sound-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            margin-left: 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1;
+        }
+
+        .sound-button:hover {
+            transform: scale(1.1);
+        }
+
+        .sound-button:active {
+            transform: scale(0.95);
+        }
+
+        .sound-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .sound-wave {
+            position: absolute;
+            background: #ff6b35;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .wave-1 {
+            width: 3px;
+            height: 16px;
+            left: 6px;
+        }
+
+        .wave-2 {
+            width: 3px;
+            height: 20px;
+            left: 11px;
+        }
+
+        .wave-3 {
+            width: 3px;
+            height: 12px;
+            left: 16px;
+        }
+
+        /* Hover effects */
+        .sound-button:hover .sound-wave {
+            background: #ff8a50;
+        }
+
+        .sound-button:hover .wave-1 {
+            height: 18px;
+        }
+
+        .sound-button:hover .wave-2 {
+            height: 24px;
+        }
+
+        .sound-button:hover .wave-3 {
+            height: 14px;
+        }
+
+        /* Playing state animations */
+        .sound-button.playing .sound-wave {
+            animation: soundWave 0.8s ease-in-out infinite alternate;
+        }
+
+        .sound-button.playing .wave-1 {
+            animation-delay: 0s;
+        }
+
+        .sound-button.playing .wave-2 {
+            animation-delay: 0.1s;
+        }
+
+        .sound-button.playing .wave-3 {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes soundWave {
+            0% {
+                transform: scaleY(1);
+                background: #ff6b35;
+            }
+
+            50% {
+                transform: scaleY(1.4);
+                background: #ff8a50;
+            }
+
+            100% {
+                transform: scaleY(0.8);
+                background: #ff6b35;
+            }
+        }
+
+        /* Glow effect */
+        .sound-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .sound-button:hover .sound-glow {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .sound-button.playing .sound-glow {
+            opacity: 1;
+            animation: glowPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.4);
+                opacity: 0.9;
+            }
+        }
+
+        /* Particle effects */
+        .sound-particles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .sound-button.playing .sound-particles {
+            opacity: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b35;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .sound-button.playing .particle {
+            animation: particleFloat 2s ease-in-out infinite;
+        }
+
+        .particle-1 {
+            top: 10px;
+            left: 28px;
+            animation-delay: 0s;
+        }
+
+        .particle-2 {
+            top: 28px;
+            left: 46px;
+            animation-delay: 0.5s;
+        }
+
+        .particle-3 {
+            top: 46px;
+            left: 28px;
+            animation-delay: 1s;
+        }
+
+        .particle-4 {
+            top: 28px;
+            left: 10px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                opacity: 0;
+                transform: scale(0) translateY(0);
+            }
+
+            20% {
+                opacity: 1;
+                transform: scale(1) translateY(-5px);
+            }
+
+            80% {
+                opacity: 1;
+                transform: scale(1) translateY(-15px);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0) translateY(-25px);
+            }
+        }
+
+        /* Playing state rotation */
+        .sound-button.playing {
+            animation: gentleRotate 4s linear infinite;
+        }
+
+        @keyframes gentleRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Paused state indicator */
+        .sound-button.paused .sound-wave {
+            opacity: 0.6;
+            animation: none;
+        }
+
+        .sound-button.paused::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: #ff6b35;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .sound-button {
+                width: 32px;
+                height: 32px;
+                margin-left: 10px;
+                padding: 6px;
+            }
+
+            .sound-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .wave-1 {
+                width: 2px;
+                height: 12px;
+                left: 5px;
+            }
+
+            .wave-2 {
+                width: 2px;
+                height: 16px;
+                left: 9px;
+            }
+
+            .wave-3 {
+                width: 2px;
+                height: 8px;
+                left: 13px;
+            }
+
+            .sound-glow {
+                width: 32px;
+                height: 32px;
+            }
+
+            .sound-particles {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        /* Error state */
+        .sound-button.error .sound-wave {
+            background: #f44336;
+            animation: errorShake 0.5s ease-in-out;
+        }
+
+        @keyframes errorShake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-2px);
+            }
+
+            75% {
+                transform: translateX(2px);
+            }
+        }
+
+        /* Loading state */
+        .sound-button.loading .sound-wave {
+            animation: loadingPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes loadingPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Additional sound type indicators */
+        .sound-button.main-sound .sound-wave {
+            background: linear-gradient(45deg, #ff6b35, #ff8a50);
+        }
+
+        .sound-button.rotation-sound .sound-wave {
+            background: linear-gradient(45deg, #4caf50, #66bb6a);
+        }
+
+        .sound-button.rotation-sound.playing .sound-wave {
+            animation: rotationSoundWave 0.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes rotationSoundWave {
+            0% {
+                transform: scaleY(1);
+                background: linear-gradient(45deg, #4caf50, #66bb6a);
+            }
+
+            50% {
+                transform: scaleY(1.6);
+                background: linear-gradient(45deg, #66bb6a, #81c784);
+            }
+
+            100% {
+                transform: scaleY(0.6);
+                background: linear-gradient(45deg, #4caf50, #66bb6a);
+            }
+        }
+
+        .sound-button.rotation-sound .sound-glow {
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.3) 0%, transparent 70%);
+        }
+
+        .sound-button.rotation-sound .particle {
+            background: #4caf50;
+        }
+
+        /* Special sparkle effect for rotation sounds */
+        .sound-button.rotation-sound.playing {
+            animation: gentleRotate 3s linear infinite, sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 rgba(76, 175, 80, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+            }
+        }
     </style>
 </head>
 
@@ -1326,6 +1722,32 @@
                 <div class="logo">
                     <img src="approach_logo_new.svg" alt="Approach App Logo" class="logo-icon">
                     <span class="logo-text">APPROACH</span>
+                    <button id="sound-button" class="sound-button" aria-label="Play introduction sound"
+                        title="Play introduction sound">
+                        <div class="sound-icon">
+                            <div class="sound-wave wave-1"></div>
+                            <div class="sound-wave wave-2"></div>
+                            <div class="sound-wave wave-3"></div>
+                        </div>
+                        <div class="sound-glow"></div>
+                        <div class="sound-particles">
+                            <div class="particle particle-1"></div>
+                            <div class="particle particle-2"></div>
+                            <div class="particle particle-3"></div>
+                            <div class="particle particle-4"></div>
+                        </div>
+                    </button>
+                    <!-- Main intro audio -->
+                    <audio id="intro-audio" preload="auto">
+                        <source src="Liam_Approach_Sound_1_Click_Again.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+
+                    <!-- Additional rotation sounds -->
+                    <audio id="rotation-audio" preload="none">
+                        <source src="" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
                 <div class="social-links">
                     <a href="https://www.instagram.com/approachcoachapp/" target="_blank" aria-label="Instagram"
@@ -2214,11 +2636,414 @@
             }
         }
 
+        // Enhanced Sound Button Controller Class with Random Rotation
+        class SoundButtonController {
+            constructor() {
+                this.button = document.getElementById('sound-button');
+                this.mainAudio = document.getElementById('intro-audio');
+                this.rotationAudio = document.getElementById('rotation-audio');
+                this.currentAudio = null;
+
+                // Sound management
+                this.isPlaying = false;
+                this.isLoaded = false;
+                this.hasError = false;
+                this.hasPlayedMainSound = false;
+                this.currentSoundType = 'main'; // 'main' or 'rotation'
+
+                // Sound rotation playlist - easily expandable
+                this.rotationSounds = [
+                    'blondie_conversational_approach_1.mp3'
+                    // Add more sounds here as you get them:
+                    // 'new_sound_2.mp3',
+                    // 'new_sound_3.mp3',
+                ];
+
+                this.lastPlayedIndex = -1; // To avoid immediate repeats
+
+                this.init();
+            }
+
+            init() {
+                if (!this.button || !this.mainAudio || !this.rotationAudio) {
+                    console.warn('Sound button or audio elements not found');
+                    return;
+                }
+
+                this.currentAudio = this.mainAudio;
+                this.setupEventListeners();
+                this.preloadMainAudio();
+            }
+
+            setupEventListeners() {
+                // Button click handler
+                this.button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.handleSoundClick();
+                });
+
+                // Keyboard support
+                this.button.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.handleSoundClick();
+                    }
+                });
+
+                // Main audio event listeners
+                this.setupAudioEventListeners(this.mainAudio, 'main');
+
+                // Rotation audio event listeners
+                this.setupAudioEventListeners(this.rotationAudio, 'rotation');
+            }
+
+            setupAudioEventListeners(audioElement, type) {
+                audioElement.addEventListener('loadstart', () => {
+                    if (this.currentAudio === audioElement) {
+                        this.setLoadingState();
+                    }
+                });
+
+                audioElement.addEventListener('canplaythrough', () => {
+                    if (this.currentAudio === audioElement) {
+                        this.isLoaded = true;
+                        this.clearLoadingState();
+                        console.log(`${type} audio loaded successfully`);
+                    }
+                });
+
+                audioElement.addEventListener('play', () => {
+                    if (this.currentAudio === audioElement) {
+                        this.setPlayingState(type);
+                    }
+                });
+
+                audioElement.addEventListener('pause', () => {
+                    if (this.currentAudio === audioElement) {
+                        this.setPausedState();
+                    }
+                });
+
+                audioElement.addEventListener('ended', () => {
+                    if (this.currentAudio === audioElement) {
+                        this.handleSoundEnded(type);
+                    }
+                });
+
+                audioElement.addEventListener('error', (e) => {
+                    if (this.currentAudio === audioElement) {
+                        this.handleAudioError(e, type);
+                    }
+                });
+
+                // Volume control
+                audioElement.volume = 0.7;
+            }
+
+            preloadMainAudio() {
+                try {
+                    this.mainAudio.load();
+                } catch (error) {
+                    console.warn('Main audio preload failed:', error);
+                    this.handleAudioError(error, 'main');
+                }
+            }
+
+            handleSoundClick() {
+                if (this.hasError) {
+                    this.showErrorFeedback();
+                    return;
+                }
+
+                // If currently playing, pause
+                if (this.isPlaying) {
+                    this.pauseSound();
+                    return;
+                }
+
+                // Determine which sound to play
+                if (!this.hasPlayedMainSound) {
+                    this.playMainSound();
+                } else {
+                    this.playRandomRotationSound();
+                }
+            }
+
+            async playMainSound() {
+                this.currentAudio = this.mainAudio;
+                this.currentSoundType = 'main';
+                this.updateVisualState('main');
+
+                try {
+                    if (!this.isLoaded) {
+                        this.setLoadingState();
+                        this.mainAudio.load();
+                        return;
+                    }
+
+                    await this.playCurrentAudio();
+                    this.hasPlayedMainSound = true;
+                    this.updateAriaLabel('Playing main introduction sound');
+                } catch (error) {
+                    this.handlePlayError(error);
+                }
+            }
+
+            async playRandomRotationSound() {
+                if (this.rotationSounds.length === 0) {
+                    console.warn('No rotation sounds available');
+                    return;
+                }
+
+                // Select random sound (avoid immediate repeat if possible)
+                let randomIndex;
+                if (this.rotationSounds.length === 1) {
+                    randomIndex = 0;
+                } else {
+                    do {
+                        randomIndex = Math.floor(Math.random() * this.rotationSounds.length);
+                    } while (randomIndex === this.lastPlayedIndex && this.rotationSounds.length > 1);
+                }
+
+                this.lastPlayedIndex = randomIndex;
+                const selectedSound = this.rotationSounds[randomIndex];
+
+                this.currentAudio = this.rotationAudio;
+                this.currentSoundType = 'rotation';
+                this.updateVisualState('rotation');
+
+                // Load the selected sound
+                this.rotationAudio.src = selectedSound;
+                this.isLoaded = false;
+
+                try {
+                    this.setLoadingState();
+                    this.rotationAudio.load();
+
+                    // Wait for it to be ready and play
+                    this.rotationAudio.addEventListener('canplaythrough', async () => {
+                        this.isLoaded = true;
+                        this.clearLoadingState();
+                        await this.playCurrentAudio();
+                        this.updateAriaLabel(`Playing rotation sound: ${selectedSound}`);
+                    }, { once: true });
+
+                } catch (error) {
+                    this.handlePlayError(error);
+                }
+            }
+
+            async playCurrentAudio() {
+                try {
+                    // Reset audio to beginning if it ended
+                    if (this.currentAudio.ended) {
+                        this.currentAudio.currentTime = 0;
+                    }
+
+                    const playPromise = this.currentAudio.play();
+
+                    if (playPromise !== undefined) {
+                        await playPromise;
+                        this.isPlaying = true;
+                        console.log(`${this.currentSoundType} audio playing successfully`);
+                    }
+                } catch (error) {
+                    console.error('Play failed:', error);
+                    this.handlePlayError(error);
+                }
+            }
+
+            pauseSound() {
+                try {
+                    if (this.currentAudio) {
+                        this.currentAudio.pause();
+                        this.isPlaying = false;
+                        this.updateAriaLabel(`Resume ${this.currentSoundType} sound`);
+                    }
+                } catch (error) {
+                    console.error('Pause failed:', error);
+                }
+            }
+
+            updateVisualState(soundType) {
+                // Remove all type classes
+                this.button.classList.remove('main-sound', 'rotation-sound');
+
+                // Add appropriate class
+                if (soundType === 'main') {
+                    this.button.classList.add('main-sound');
+                } else if (soundType === 'rotation') {
+                    this.button.classList.add('rotation-sound');
+                }
+            }
+
+            setPlayingState(type) {
+                this.button.classList.remove('paused', 'loading', 'error');
+                this.button.classList.add('playing');
+                this.isPlaying = true;
+
+                // Add visual feedback
+                this.addClickFeedback();
+
+                console.log(`Playing ${type} sound with special effects`);
+            }
+
+            setPausedState() {
+                this.button.classList.remove('playing', 'loading', 'error');
+                this.button.classList.add('paused');
+                this.isPlaying = false;
+            }
+
+            setIdleState() {
+                this.button.classList.remove('playing', 'paused', 'loading', 'error');
+                this.isPlaying = false;
+            }
+
+            setLoadingState() {
+                this.button.classList.remove('playing', 'paused', 'error');
+                this.button.classList.add('loading');
+                this.updateAriaLabel('Loading sound...');
+            }
+
+            clearLoadingState() {
+                this.button.classList.remove('loading');
+                const soundType = this.hasPlayedMainSound ? 'rotation' : 'main';
+                this.updateAriaLabel(`Play ${soundType} sound`);
+            }
+
+            handleSoundEnded(type) {
+                this.setIdleState();
+
+                if (type === 'main') {
+                    this.updateAriaLabel('Play rotation sound');
+                } else {
+                    this.updateAriaLabel('Play another rotation sound');
+                }
+
+                console.log(`${type} sound ended`);
+            }
+
+            handleAudioError(error, type = 'unknown') {
+                console.error(`${type} audio error:`, error);
+                this.hasError = true;
+                this.button.classList.remove('playing', 'paused', 'loading');
+                this.button.classList.add('error');
+                this.updateAriaLabel(`${type} audio unavailable`);
+
+                this.showErrorFeedback();
+            }
+
+            handlePlayError(error) {
+                if (error.name === 'NotAllowedError') {
+                    console.log('Autoplay blocked - user interaction required');
+                    this.updateAriaLabel('Click to play sound (browser blocked autoplay)');
+                } else {
+                    this.handleAudioError(error, this.currentSoundType);
+                }
+            }
+
+            showErrorFeedback() {
+                // Visual feedback for error
+                this.button.style.animation = 'none';
+                setTimeout(() => {
+                    this.button.style.animation = '';
+                }, 10);
+
+                console.log(`${this.currentSoundType} sound is currently unavailable`);
+            }
+
+            addClickFeedback() {
+                // Add a subtle click animation
+                this.button.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.button.style.transform = '';
+                }, 150);
+            }
+
+            updateAriaLabel(label) {
+                this.button.setAttribute('aria-label', label);
+                this.button.setAttribute('title', label);
+            }
+
+            // Public methods for external control
+            addRotationSound(soundFile) {
+                if (!this.rotationSounds.includes(soundFile)) {
+                    this.rotationSounds.push(soundFile);
+                    console.log(`Added new rotation sound: ${soundFile}`);
+                }
+            }
+
+            removeRotationSound(soundFile) {
+                const index = this.rotationSounds.indexOf(soundFile);
+                if (index > -1) {
+                    this.rotationSounds.splice(index, 1);
+                    console.log(`Removed rotation sound: ${soundFile}`);
+                }
+            }
+
+            getRotationSounds() {
+                return [...this.rotationSounds];
+            }
+
+            resetToMainSound() {
+                this.hasPlayedMainSound = false;
+                this.lastPlayedIndex = -1;
+                this.updateAriaLabel('Play introduction sound');
+            }
+
+            play() {
+                if (!this.isPlaying) {
+                    this.handleSoundClick();
+                }
+            }
+
+            pause() {
+                if (this.isPlaying) {
+                    this.pauseSound();
+                }
+            }
+
+            stop() {
+                this.pauseSound();
+                if (this.currentAudio) {
+                    this.currentAudio.currentTime = 0;
+                }
+                this.setIdleState();
+            }
+
+            getState() {
+                return {
+                    isPlaying: this.isPlaying,
+                    isLoaded: this.isLoaded,
+                    hasError: this.hasError,
+                    currentSoundType: this.currentSoundType,
+                    hasPlayedMainSound: this.hasPlayedMainSound,
+                    rotationSounds: this.getRotationSounds(),
+                    currentTime: this.currentAudio ? this.currentAudio.currentTime : 0,
+                    duration: this.currentAudio ? this.currentAudio.duration : 0
+                };
+            }
+        }
+
         // Initialize all components when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             new EngagementTracker();
             new JenniferPopup();
             new FloatingVideoPlayer();
             new SocialDropdown();
+
+            // Initialize sound button
+            const soundController = new SoundButtonController();
+
+            // Make it globally available for debugging
+            window.soundController = soundController;
+
+            // Optional: Add keyboard shortcut (Ctrl/Cmd + M for mute/unmute)
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
+                    e.preventDefault();
+                    soundController.handleSoundClick();
+                }
+            });
         });
     </script>
