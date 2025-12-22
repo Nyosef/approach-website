@@ -122,6 +122,21 @@
             color: #ff6b35;
         }
 
+        /* App store icons hover effect - desktop only */
+        @media (min-width: 769px) {
+
+            .social-links a[href*="apps.apple.com"]:hover i,
+            .social-links a[href*="play.google.com"]:hover i {
+                transform: scale(1.2);
+                transition: transform 0.3s ease;
+            }
+
+            .social-links a[href*="apps.apple.com"] i,
+            .social-links a[href*="play.google.com"] i {
+                transition: transform 0.3s ease;
+            }
+        }
+
         .social-divider {
             width: 1px;
             height: 30px;
@@ -1799,9 +1814,9 @@
                         aria-label="iOS App">
                         <i class="fab fa-apple"></i>
                     </a>
-                    <a href="#" onclick="return false;" aria-label="Android App (Coming Soon)"
-                        title="Android App Coming Soon">
-                        <i class="fab fa-google-play" style="opacity: 0.6;"></i>
+                    <a href="https://play.google.com/store/apps/details?id=com.approachapp.prod&pcampaignid=web_share"
+                        target="_blank" aria-label="Android App">
+                        <i class="fab fa-google-play"></i>
                     </a>
                 </div>
             </nav>
