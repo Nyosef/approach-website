@@ -3136,6 +3136,16 @@
 
             // Click handler for minimize/toggle button
             let chatWidgetVisible = false;
+
+            // Check initial state on page load
+            setTimeout(() => {
+                checkForTidioWidget();
+                // If widget is already visible, set state accordingly
+                if (chatCloseBtn.classList.contains('show')) {
+                    chatWidgetVisible = true;
+                }
+            }, 2000); // Give Tidio time to load
+
             chatCloseBtn.addEventListener('click', function () {
                 if (chatWidgetVisible) {
                     // Close/minimize the chat widget
