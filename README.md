@@ -16,6 +16,33 @@ A professional single-page website designed to attract dating coaches and explai
 
 Simply open `index.html` in any web browser to view the landing page.
 
+## Local Development Server
+
+For the best development experience and to test features like the chat widget, run the site using a local server:
+
+### Option 1: Using Node.js (Recommended)
+```bash
+npx serve . -p 8000
+```
+Then visit `http://localhost:8000`
+
+### Option 2: Using Python 3
+```bash
+python -m http.server 8000
+```
+Then visit `http://localhost:8000`
+
+### Option 3: Using Python 2
+```bash
+python -m SimpleHTTPServer 8000
+```
+Then visit `http://localhost:8000`
+
+**Why use a local server?**
+- External scripts (like the chat widget) load properly
+- Better simulates production environment
+- Enables testing of interactive features
+
 ## Deployment to GitHub Pages
 
 1. Create a new repository on GitHub

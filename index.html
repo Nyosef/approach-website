@@ -850,7 +850,7 @@
         .floating-video-container {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             z-index: 1000;
             font-family: 'Inter', sans-serif;
         }
@@ -1085,38 +1085,27 @@
             }
         }
 
-        /* Mobile Responsive */
+        /* Hide video popup on mobile - only show Jennifer popup */
         @media (max-width: 768px) {
             .floating-video-container {
-                bottom: 10px;
-                right: 10px;
-                left: 10px;
+                display: none !important;
             }
+        }
 
-            .video-thumbnail {
-                max-width: none;
-                justify-content: center;
-            }
-
-            .video-player {
-                width: 100%;
-                max-width: none;
-            }
-
-            .video-player.minimized {
-                width: 100%;
+        /* Desktop: Position video player to the left when expanded */
+        @media (min-width: 769px) {
+            .video-player.visible:not(.minimized) {
+                position: fixed;
+                left: 20px;
+                bottom: 20px;
+                right: auto;
+                top: auto;
+                transform: none;
             }
 
             .video-player.expanded {
-                width: 100%;
-            }
-
-            .video-content video {
-                max-height: 250px;
-            }
-
-            .video-player.expanded .video-content video {
-                max-height: 300px;
+                left: 20px;
+                right: auto;
             }
         }
 
@@ -3062,3 +3051,127 @@
             });
         });
     </script>
+    <!-- Tidio Chat Widget -->
+    <script src="//code.tidio.co/cmydux01bt9dl7jevrkqrwcssmom8yyv.js" async></script>
+
+    <!-- Custom Chat Widget Close Button -->
+    <style>
+        .chat-close-overlay {
+            position: fixed;
+            bottom: 120px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 107, 53, 0.9);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-close-overlay:hover {
+            background: rgba(255, 107, 53, 1);
+            transform: scale(1.1);
+        }
+
+        .chat-close-overlay.show {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .chat-close-overlay {
+                bottom: 100px;
+                right: 15px;
+            }
+        }
+    </style>
+
+    <div id="chat-close-overlay" class="chat-close-overlay" title="Minimize Chat">
+        <i class="fas fa-minus" style="color: white; font-size: 16px;"></i>
+    </div>
+
+    <script>
+        // Chat widget close button functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatCloseBtn = document.getElementById('chat-close-overlay');
+
+            // Show close button when Tidio widget is open
+            function checkForTidioWidget() {
+                // Check for Tidio widget elements (this may vary based on Tidio's implementation)
+                const tidioElements = document.querySelectorAll('[class*="tidio"], [id*="tidio"], .tidio-chat, #tidio-chat');
+
+                if (tidioElements.length > 0) {
+                    // Check if widget is expanded/opened
+                    const isWidgetOpen = document.querySelector('[class*="opened"], [class*="active"], [class*="visible"]') ||
+                        document.body.classList.contains('tidio-chat-opened');
+
+                    if (isWidgetOpen) {
+                        chatCloseBtn.classList.add('show');
+                    } else {
+                        chatCloseBtn.classList.remove('show');
+                    }
+                }
+            }
+
+            // Monitor for Tidio widget changes
+            const observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if (mutation.type === 'childList' || mutation.type === 'attributes') {
+                        setTimeout(checkForTidioWidget, 100);
+                    }
+                });
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true,
+                attributes: true,
+                attributeFilter: ['class', 'style']
+            });
+
+            // Click handler for minimize/toggle button
+            let chatWidgetVisible = false;
+            chatCloseBtn.addEventListener('click', function () {
+                if (chatWidgetVisible) {
+                    // Close/minimize the chat widget
+                    if (window.tidioChatApi) {
+                        window.tidioChatApi.hide();
+                    }
+
+                    // Alternative: try to find and click Tidio's close button
+                    const tidioCloseBtn = document.querySelector('[class*="close"], [class*="tidio"] button[aria-label*="close"], [class*="tidio"] .close');
+                    if (tidioCloseBtn) {
+                        tidioCloseBtn.click();
+                    }
+
+                    chatWidgetVisible = false;
+                    chatCloseBtn.classList.remove('show');
+                } else {
+                    // Open the chat widget
+                    if (window.tidioChatApi) {
+                        window.tidioChatApi.show();
+                    }
+
+                    // Alternative: try to find and click Tidio's open button
+                    const tidioOpenBtn = document.querySelector('[class*="tidio"] button:not([aria-label*="close"]):not(.close), #tidio-chat, [class*="tidio-chat"]');
+                    if (tidioOpenBtn && tidioOpenBtn.offsetParent !== null) {
+                        tidioOpenBtn.click();
+                    }
+
+                    chatWidgetVisible = true;
+                    chatCloseBtn.classList.add('show');
+                }
+            });
+
+            // Periodic check for widget state
+            setInterval(checkForTidioWidget, 1000);
+        });
+    </script>
+</body>
+
+</html>
