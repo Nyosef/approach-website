@@ -61,6 +61,13 @@
             font-size: 28px;
             font-weight: 800;
             color: #4d61f5;
+            cursor: pointer;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
         }
 
         .logo-icon {
@@ -548,10 +555,10 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <div class="logo">
+                <a href="index.html" class="logo">
                     <img src="approach_logo_new.svg" alt="Approach App Logo" class="logo-icon">
                     <span class="logo-text">APPROACH</span>
-                </div>
+                </a>
                 <a href="index.html" class="back-button">
                     <i class="fas fa-arrow-left"></i>
                     Back to Home

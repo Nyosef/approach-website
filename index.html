@@ -336,6 +336,164 @@
             color: #ff6b35;
         }
 
+        /* Scribble Text */
+        .scribble-text {
+            position: absolute;
+            top: 60%;
+            right: -180px;
+            transform: translateY(-50%) rotate(12deg);
+            z-index: 5;
+            opacity: 0;
+            animation: appearText 0.5s ease-out 5s forwards;
+        }
+
+        .scribble-text a {
+            display: inline-block;
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            font-weight: 400;
+            color: #ff6b35;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            opacity: 0.8;
+        }
+
+        .scribble-text a:hover {
+            transform: scale(1.02) rotate(-1deg);
+            color: #ff8a50;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 1;
+        }
+
+        /* Letter-by-letter writing animation */
+        .scribble-text a span {
+            display: inline-block;
+            opacity: 0;
+            animation: letterWrite 0.05s ease-out forwards;
+        }
+
+        .scribble-text a span:nth-child(1) {
+            animation-delay: 5.5s;
+        }
+
+        .scribble-text a span:nth-child(2) {
+            animation-delay: 5.55s;
+        }
+
+        .scribble-text a span:nth-child(3) {
+            animation-delay: 5.6s;
+        }
+
+        .scribble-text a span:nth-child(4) {
+            animation-delay: 5.65s;
+        }
+
+        .scribble-text a span:nth-child(5) {
+            animation-delay: 5.7s;
+        }
+
+        .scribble-text a span:nth-child(6) {
+            animation-delay: 5.75s;
+        }
+
+        .scribble-text a span:nth-child(7) {
+            animation-delay: 5.8s;
+        }
+
+        .scribble-text a span:nth-child(8) {
+            animation-delay: 5.85s;
+        }
+
+        .scribble-text a span:nth-child(9) {
+            animation-delay: 5.9s;
+        }
+
+        .scribble-text a span:nth-child(10) {
+            animation-delay: 5.95s;
+        }
+
+        .scribble-text a span:nth-child(11) {
+            animation-delay: 6s;
+        }
+
+        .scribble-text a span:nth-child(12) {
+            animation-delay: 6.05s;
+        }
+
+        .scribble-text a span:nth-child(13) {
+            animation-delay: 6.1s;
+        }
+
+        .scribble-text a span:nth-child(14) {
+            animation-delay: 6.15s;
+        }
+
+        .scribble-text a span:nth-child(15) {
+            animation-delay: 6.2s;
+        }
+
+        .scribble-text a span:nth-child(16) {
+            animation-delay: 6.25s;
+        }
+
+        .scribble-text a span:nth-child(17) {
+            animation-delay: 6.3s;
+        }
+
+        .scribble-text a span:nth-child(18) {
+            animation-delay: 6.35s;
+        }
+
+        .scribble-text a span:nth-child(19) {
+            animation-delay: 6.4s;
+        }
+
+        @keyframes appearText {
+            0% {
+                opacity: 0;
+                transform: translateY(-50%) rotate(12deg) scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(-50%) rotate(12deg) scale(1);
+            }
+        }
+
+        @keyframes letterWrite {
+            0% {
+                opacity: 0;
+                transform: translateY(5px) rotate(5deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .scribble-text {
+                position: static;
+                transform: none;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .scribble-text a {
+                font-size: 1.4rem;
+            }
+        }
+
         .hero p {
             font-size: clamp(1.1rem, 2vw, 1.3rem);
             margin-bottom: 40px;
@@ -1825,6 +1983,12 @@
             <div class="hero-content fade-in-up">
                 <h1>Turn Your Coaching Into a <span class="highlight">Profitable Business</span> with the Approach App
                 </h1>
+                <!-- Scribble Text -->
+                <div class="scribble-text">
+                    <a href="landing.html">
+                        <span>c</span><span>l</span><span>i</span><span>c</span><span>k</span><span>&nbsp;</span><span>h</span><span>e</span><span>r</span><span>e</span><span>&nbsp;</span><span>f</span><span>o</span><span>r</span><span>&nbsp;</span><span>t</span><span>h</span><span>e</span><span>&nbsp;</span><span>g</span><span>i</span><span>s</span><span>t</span>
+                    </a>
+                </div>
                 <p>Help your clients master cold approach while building recurring revenue and deeper client
                     relationships. The complete platform for modern dating coaches.</p>
                 <div class="cta-buttons">
@@ -1850,8 +2014,8 @@
                     <i class="fas fa-video"></i>
                 </div>
                 <div class="popup-text">
-                    <div class="popup-title">Would you like to hear more from our Jennifer?</div>
-                    <div class="popup-subtitle">Exclusive coaching insights</div>
+                    <div class="popup-title">Ready to see the Platform Demo?</div>
+                    <div class="popup-subtitle">See how it all works together</div>
                 </div>
             </div>
         </div>
@@ -1869,8 +2033,8 @@
                     <i class="fas fa-play"></i>
                 </div>
                 <div class="thumbnail-text">
-                    <span class="thumbnail-title">Transform Your Coaching</span>
-                    <span class="thumbnail-subtitle">See the future of coaching</span>
+                    <span class="thumbnail-title">Hear from Jennifer</span>
+                    <span class="thumbnail-subtitle">Exclusive coaching insights</span>
                 </div>
             </div>
         </div>
@@ -1895,10 +2059,10 @@
                 </div>
             </div>
             <div class="video-tabs">
-                <button class="video-tab active" id="platform-tab" data-video="platform">
+                <button class="video-tab" id="platform-tab" data-video="platform">
                     Platform Demo
                 </button>
-                <button class="video-tab" id="jennifer-tab" data-video="jennifer">
+                <button class="video-tab active" id="jennifer-tab" data-video="jennifer">
                     Jennifer's Insights
                 </button>
             </div>
@@ -2246,13 +2410,13 @@
 
             checkEngagementCriteria() {
                 const timeElapsed = Date.now() - this.startTime;
-                const twentySeconds = 20000; // 20 seconds in milliseconds
+                const thirtySeconds = 30000; // 30 seconds in milliseconds
 
-                if (!this.popupShown && timeElapsed >= twentySeconds && this.hasScrolled) {
+                if (!this.popupShown && timeElapsed >= thirtySeconds && this.hasScrolled) {
                     this.showJenniferPopup();
                     this.popupShown = true;
                     clearInterval(this.timerInterval);
-                    console.log('Jennifer popup triggered - 20 seconds + scroll detected');
+                    console.log('Jennifer popup triggered - 30 seconds + scroll detected');
                 }
             }
 
@@ -2284,20 +2448,27 @@
                     this.hidePopup();
                 });
 
-                // Popup bubble click - show Jennifer video
+                // Popup bubble click - show Platform Demo video
                 this.popupBubble.addEventListener('click', () => {
-                    this.showJenniferVideo();
+                    this.showPlatformDemoVideo();
                 });
+            }
+
+            showJenniferVideo() {
+                // Get the video player instance and switch to Jennifer's Insights tab
+                if (window.videoPlayer) {
+                    window.videoPlayer.showPlayerWithJenniferVideo();
+                }
             }
 
             hidePopup() {
                 this.popup.classList.remove('visible');
             }
 
-            showJenniferVideo() {
-                // Get the video player instance and switch to Jennifer tab
+            showPlatformDemoVideo() {
+                // Get the video player instance and switch to Platform Demo tab
                 if (window.videoPlayer) {
-                    window.videoPlayer.showPlayerWithJenniferVideo();
+                    window.videoPlayer.showPlayerWithPlatformDemoVideo();
                 }
             }
         }
@@ -2323,7 +2494,7 @@
                 this.isMainVideoLoaded = false;
                 this.isJenniferVideoLoaded = false;
                 this.isVisible = false;
-                this.currentVideo = 'platform';
+                this.currentVideo = 'jennifer';
 
                 this.init();
             }
@@ -2460,11 +2631,17 @@
                 this.thumbnail.style.display = 'none';
                 this.player.classList.add('visible');
 
-                // Load main video if not already loaded and attempt autoplay
-                if (!this.isMainVideoLoaded) {
-                    this.mainVideo.load();
+                // Update UI to match current video state
+                this.switchToVideo(this.currentVideo);
+
+                // Load the current video based on currentVideo setting
+                const currentVideoEl = this.getCurrentVideoElement();
+                const isVideoLoaded = this.currentVideo === 'platform' ? this.isMainVideoLoaded : this.isJenniferVideoLoaded;
+
+                if (!isVideoLoaded) {
+                    currentVideoEl.load();
                     // Auto-play when video is ready
-                    this.mainVideo.addEventListener('canplay', () => {
+                    currentVideoEl.addEventListener('canplay', () => {
                         this.attemptAutoplay();
                     }, { once: true });
                 } else {
@@ -2476,6 +2653,22 @@
                 this.trackVideoView();
             }
 
+            showPlayerWithPlatformDemoVideo() {
+                // Show the player if not visible
+                if (!this.player.classList.contains('visible')) {
+                    this.thumbnail.style.display = 'none';
+                    this.player.classList.add('visible');
+                }
+
+                // Switch to Platform Demo tab
+                this.switchToVideo('platform');
+
+                // Attempt autoplay
+                setTimeout(() => {
+                    this.attemptAutoplay();
+                }, 500);
+            }
+
             showPlayerWithJenniferVideo() {
                 // Show the player if not visible
                 if (!this.player.classList.contains('visible')) {
@@ -2483,7 +2676,7 @@
                     this.player.classList.add('visible');
                 }
 
-                // Switch to Jennifer tab
+                // Switch to Jennifer's Insights tab
                 this.switchToVideo('jennifer');
 
                 // Attempt autoplay
@@ -2508,7 +2701,7 @@
                 this.jenniferVideo.style.display = videoType === 'jennifer' ? 'block' : 'none';
 
                 // Update title
-                this.currentVideoTitle.textContent = videoType === 'platform' ? 'Platform Demo' : "Jennifer's Insights";
+                this.currentVideoTitle.textContent = videoType === 'platform' ? 'Platform Demo' : "Hear from Jennifer";
 
                 // Load Jennifer video if switching to it and not loaded
                 if (videoType === 'jennifer' && !this.isJenniferVideoLoaded) {
