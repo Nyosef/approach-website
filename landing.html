@@ -108,6 +108,7 @@
         .hero {
             padding: 40px 0 40px;
             text-align: center;
+            position: relative;
         }
 
         .hero-title {
@@ -161,15 +162,191 @@
             font-size: 1.2rem;
         }
 
+        /* Floating Bubbles */
+        .floating-bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            width: 110px;
+            height: 45px;
+            border-radius: 22px;
+            background: rgba(77, 97, 245, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: white;
+            box-shadow: 0 0 20px rgba(77, 97, 245, 0.3), 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation-duration: 4s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            z-index: 1;
+        }
+
+        .bubble span {
+            line-height: 1.2;
+        }
+
+        .bubble-top {
+            top: -20px;
+            left: 25%;
+            animation-name: float-vertical;
+            animation-delay: 0s;
+        }
+
+        .bubble-right {
+            top: -20px;
+            right: 20%;
+            animation-name: float-vertical;
+            animation-delay: 1s;
+        }
+
+        .bubble-bottom {
+            bottom: -60px;
+            left: 30%;
+            animation-name: float-vertical;
+            animation-delay: 2s;
+        }
+
+        .bubble-left {
+            bottom: -60px;
+            right: 25%;
+            animation-name: float-vertical;
+            animation-delay: 3s;
+        }
+
+        @keyframes float-vertical {
+
+            0%,
+            100% {
+                transform: translateY(0px) translateX(-50%);
+            }
+
+            50% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        @keyframes float-horizontal {
+
+            0%,
+            100% {
+                transform: translateX(0px) translateY(-50%);
+            }
+
+            50% {
+                transform: translateX(-5px) translateY(-50%);
+            }
+        }
+
+        /* Responsive for bubbles */
+        @media (max-width: 768px) {
+            .bubble {
+                width: 90px;
+                height: 40px;
+                font-size: 0.7rem;
+            }
+
+            .bubble-top {
+                top: -50px;
+                left: 15%;
+            }
+
+            .bubble-right {
+                top: -30px;
+                right: 10%;
+            }
+
+            .bubble-bottom {
+                bottom: -50px;
+                left: 20%;
+            }
+
+            .bubble-left {
+                bottom: -30px;
+                right: 15%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bubble {
+                display: none;
+            }
+        }
+
         /* Video Section */
         .video-section {
             padding: 20px 0 40px;
-            text-align: center;
+        }
+
+        .video-layout {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefits-list {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .benefit-item {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 15px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .typewriter {
+            display: inline-block;
+            width: 0;
+            overflow: hidden;
+            animation: typing 2s steps(30) forwards;
+            white-space: nowrap;
+        }
+
+        .benefit-item:nth-child(1) .typewriter {
+            animation-delay: 1s;
+        }
+
+        .benefit-item:nth-child(2) .typewriter {
+            animation-delay: 3s;
+        }
+
+        .benefit-item:nth-child(3) .typewriter {
+            animation-delay: 5s;
+        }
+
+        .benefit-item:nth-child(4) .typewriter {
+            animation-delay: 7s;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
         }
 
         .video-container {
+            flex: 1;
             max-width: 500px;
-            margin: 0 auto;
             border-radius: 25px;
             overflow: hidden;
             box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
@@ -180,6 +357,25 @@
             width: 100%;
             height: 650px;
             border: none;
+        }
+
+        @media (max-width: 768px) {
+            .video-layout {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .benefits-list {
+                max-width: none;
+            }
+
+            .benefit-item {
+                font-size: 1rem;
+            }
+
+            .video-container {
+                max-width: none;
+            }
         }
 
         /* CTA Section */
@@ -385,6 +581,10 @@
 
         /* Mobile specific adjustments */
         @media (max-width: 480px) {
+            .benefits-list {
+                display: none;
+            }
+
             .video-container iframe {
                 height: 250px;
             }
@@ -570,7 +770,7 @@
     <!-- Hero Section -->
     <section class="hero fade-in-up">
         <div class="container">
-            <h1 class="hero-title">You get your own branded app. <span class="highlight">for free.</span></h1>
+            <h1 class="hero-title">STAND out as a coach. <span class="highlight">for free.</span></h1>
             <div class="app-logos">
                 <a href="https://apps.apple.com/il/app/approach-coach/id6752607325" target="_blank"
                     class="app-logo apple-logo">
@@ -589,12 +789,29 @@
     <!-- Video Section -->
     <section class="video-section fade-in-up">
         <div class="container">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/DRtarMLPtP4?modestbranding=1&rel=0&playsinline=1&controls=1"
-                    title="Approach App Promotion Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+            <div class="video-layout">
+                <div class="benefits-list">
+                    <div class="benefit-item" data-text="Your own branded app">
+                        <span class="typewriter">Your own branded app</span>
+                    </div>
+                    <div class="benefit-item" data-text="Deeper client connection">
+                        <span class="typewriter">Deeper client connection</span>
+                    </div>
+                    <div class="benefit-item" data-text="New revenue stream">
+                        <span class="typewriter">New revenue stream</span>
+                    </div>
+                    <div class="benefit-item" data-text="Reach new clients">
+                        <span class="typewriter">Reach new clients</span>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <iframe
+                        src="https://www.youtube.com/embed/DRtarMLPtP4?modestbranding=1&rel=0&playsinline=1&controls=1"
+                        title="Approach App Promotion Video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -706,13 +923,13 @@
                 });
             }
 
-            // Auto-scroll after video with 26 seconds timing
+            // Auto-scroll after video with 28 seconds timing
             setTimeout(function () {
                 if (!autoScrollTriggered) {
                     autoScrollTriggered = true;
                     performScroll();
                 }
-            }, 26000); // 26 seconds total timing
+            }, 28000); // 28 seconds total timing
 
             function performScroll() {
                 const ctaSection = document.querySelector('.cta-section');
@@ -742,6 +959,38 @@
                     }, 150);
                 }
             });
+
+            // Mobile typewriter cycling
+            if (window.innerWidth <= 480) {
+                const benefitItem = document.querySelector('.benefit-item');
+                const benefits = [
+                    'Your own branded app',
+                    'Deeper client connection',
+                    'New revenue stream',
+                    'Reach new clients'
+                ];
+                let currentIndex = 0;
+
+                function cycleBenefits() {
+                    // Clear all content first
+                    benefitItem.innerHTML = '';
+                    // Add new typewriter span
+                    benefitItem.innerHTML = '<span class="typewriter">' + benefits[currentIndex] + '</span>';
+                    const typewriter = benefitItem.querySelector('.typewriter');
+                    typewriter.style.width = '0';
+                    typewriter.style.animation = 'none';
+                    setTimeout(() => {
+                        typewriter.style.animation = 'typing 2s steps(30) forwards';
+                    }, 100); // Small delay to ensure reset
+                    currentIndex = (currentIndex + 1) % benefits.length;
+                }
+
+                // Start cycling after initial animation
+                setTimeout(function () {
+                    cycleBenefits();
+                    setInterval(cycleBenefits, 4000); // Cycle every 4 seconds
+                }, 9000); // Start after all initial animations
+            }
         });
     </script>
 </body>
