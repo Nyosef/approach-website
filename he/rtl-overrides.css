@@ -1,0 +1,356 @@
+/* RTL CSS Overrides for Hebrew Pages */
+/* This file contains RTL-specific styling adjustments for the Hebrew version of the Approach website */
+
+/* Global RTL Adjustments */
+[dir="rtl"] {
+    text-align: right;
+}
+
+/* Navigation and Header Adjustments */
+[dir="rtl"] .nav {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .logo {
+    order: 2;
+}
+
+[dir="rtl"] .back-button,
+[dir="rtl"] .back-link {
+    order: 1;
+}
+
+/* Icon Direction Fixes */
+[dir="rtl"] .back-button i,
+[dir="rtl"] .back-link i {
+    transform: scaleX(-1);
+}
+
+[dir="rtl"] .fas.fa-arrow-left {
+    transform: scaleX(-1);
+}
+
+[dir="rtl"] .fas.fa-arrow-right {
+    transform: none;
+}
+
+/* List and Content Adjustments */
+[dir="rtl"] ul {
+    margin: 15px 20px 15px 0;
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+[dir="rtl"] ol {
+    margin: 15px 20px 15px 0;
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+/* Border Adjustments for RTL */
+[dir="rtl"] .contact-email {
+    border-right: 4px solid #ff6b35;
+    border-left: none;
+}
+
+[dir="rtl"] .highlight-box,
+[dir="rtl"] .warning-box,
+[dir="rtl"] .subscription-info,
+[dir="rtl"] .prohibited-list {
+    border-right: 4px solid;
+    border-left: none;
+}
+
+/* Floating Elements */
+[dir="rtl"] .floating-bubbles .bubble {
+    transform: translateX(-50%);
+}
+
+[dir="rtl"] .bubble-top {
+    right: auto;
+    left: 25%;
+}
+
+[dir="rtl"] .bubble-right {
+    right: auto;
+    left: 20%;
+}
+
+[dir="rtl"] .bubble-bottom {
+    right: auto;
+    left: 30%;
+}
+
+[dir="rtl"] .bubble-left {
+    right: auto;
+    left: 25%;
+}
+
+/* Form and Input Adjustments */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+    text-align: right;
+}
+
+/* Button Icon Spacing */
+[dir="rtl"] .cta-button i {
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+[dir="rtl"] .back-button i {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+/* Social Media Grid Adjustments */
+[dir="rtl"] .social-grid {
+    direction: rtl;
+}
+
+/* Footer Links */
+[dir="rtl"] .footer-links a {
+    margin: 0 0 0 15px;
+}
+
+/* Scroll Indicator Position */
+[dir="rtl"] .scroll-indicator-fixed {
+    left: auto;
+    right: 30px;
+}
+
+/* Video Layout Adjustments */
+[dir="rtl"] .video-layout {
+    flex-direction: row-reverse;
+}
+
+/* App Logos */
+[dir="rtl"] .app-logos {
+    flex-direction: row-reverse;
+}
+
+/* Benefits List Positioning */
+[dir="rtl"] .benefits-list {
+    text-align: right;
+}
+
+/* Prohibited List Icons */
+[dir="rtl"] .prohibited-list li {
+    padding-right: 25px;
+    padding-left: 0;
+}
+
+[dir="rtl"] .prohibited-list li::before {
+    right: 0;
+    left: auto;
+}
+
+/* Reporting Methods Grid */
+[dir="rtl"] .reporting-methods {
+    direction: rtl;
+}
+
+/* Mobile Responsive RTL Adjustments */
+@media (max-width: 768px) {
+    [dir="rtl"] .nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    [dir="rtl"] .logo,
+    [dir="rtl"] .back-button,
+    [dir="rtl"] .back-link {
+        order: unset;
+    }
+
+    [dir="rtl"] .footer-links a {
+        margin: 5px 0;
+        display: block;
+    }
+}
+
+/* Typography Adjustments for Hebrew */
+[dir="rtl"] body {
+    font-family: 'Heebo', 'Inter', sans-serif;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+    font-family: 'Heebo', 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+/* Ensure proper text direction for mixed content */
+[dir="rtl"] .english-text {
+    direction: ltr;
+    display: inline-block;
+}
+
+/* Email and URL styling in RTL context */
+[dir="rtl"] a[href^="mailto:"],
+[dir="rtl"] a[href^="http://"],
+[dir="rtl"] a[href^="https://"] {
+    direction: ltr;
+    display: inline-block;
+}
+
+/* Number and date formatting */
+[dir="rtl"] .date,
+[dir="rtl"] .number,
+[dir="rtl"] .phone {
+    direction: ltr;
+    display: inline-block;
+}
+
+/* Ensure icons maintain proper orientation */
+[dir="rtl"] .fas.fa-chevron-down,
+[dir="rtl"] .fas.fa-chevron-up,
+[dir="rtl"] .fas.fa-calendar-alt,
+[dir="rtl"] .fas.fa-envelope,
+[dir="rtl"] .fas.fa-phone,
+[dir="rtl"] .fas.fa-shield-alt,
+[dir="rtl"] .fas.fa-info-circle,
+[dir="rtl"] .fas.fa-handshake,
+[dir="rtl"] .fas.fa-exclamation-triangle {
+    transform: none;
+}
+
+/* Social media icons should not be flipped */
+[dir="rtl"] .fab {
+    transform: none;
+}
+
+/* Specific adjustments for landing page elements */
+[dir="rtl"] .hero-title .highlight {
+    display: inline;
+}
+
+[dir="rtl"] .typewriter {
+    text-align: right;
+}
+
+/* Ensure proper spacing for RTL text */
+[dir="rtl"] .benefit-item {
+    text-align: right;
+}
+
+/* Policy page specific adjustments */
+[dir="rtl"] .important-notice,
+[dir="rtl"] .zero-tolerance-banner {
+    text-align: center;
+}
+
+/* Maintain center alignment for certain elements */
+[dir="rtl"] .hero,
+[dir="rtl"] .cta-section,
+[dir="rtl"] .social-section,
+[dir="rtl"] .footer {
+    text-align: center;
+}
+
+/* Ensure proper alignment for grid items */
+[dir="rtl"] .social-item {
+    text-align: center;
+}
+
+[dir="rtl"] .reporting-method {
+    text-align: center;
+}
+
+/* Animation adjustments for RTL */
+@keyframes float-vertical-rtl {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(-50%);
+    }
+
+    50% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+[dir="rtl"] .bubble {
+    animation-name: float-vertical-rtl;
+}
+
+/* Ensure consistent spacing in RTL */
+[dir="rtl"] .container {
+    padding: 0 20px;
+}
+
+/* Print styles for RTL */
+@media print {
+    [dir="rtl"] body {
+        direction: rtl;
+        text-align: right;
+    }
+
+    [dir="rtl"] .nav {
+        flex-direction: row-reverse;
+    }
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+
+    [dir="rtl"] .highlight-box,
+    [dir="rtl"] .warning-box,
+    [dir="rtl"] .contact-email {
+        border-width: 2px;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    [dir="rtl"] .bubble {
+        animation: none;
+    }
+
+    [dir="rtl"] .typewriter {
+        animation: none;
+        width: 100%;
+    }
+}
+
+/* Focus management for RTL */
+[dir="rtl"] *:focus {
+    outline-offset: 2px;
+}
+
+/* Ensure proper focus indicators for RTL navigation */
+[dir="rtl"] .back-button:focus,
+[dir="rtl"] .back-link:focus,
+[dir="rtl"] .cta-button:focus {
+    outline: 2px solid #4d61f5;
+    outline-offset: 2px;
+}
+
+/* Accessibility improvements for RTL */
+[dir="rtl"] .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Ensure proper text selection in RTL */
+[dir="rtl"] ::selection {
+    background-color: rgba(77, 97, 245, 0.2);
+    color: inherit;
+}
+
+[dir="rtl"] ::-moz-selection {
+    background-color: rgba(77, 97, 245, 0.2);
+    color: inherit;
+}
