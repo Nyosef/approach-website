@@ -2017,6 +2017,22 @@
             transform: translateX(-50%) translateY(-3px);
         }
 
+        /* Life Coaches specific button */
+        #life-coaches-card.clickable::after {
+            content: '🌟 Explore Life Coaching';
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        #life-coaches-card.clickable:hover {
+            border: 3px solid #4caf50;
+            box-shadow: 0 25px 60px rgba(76, 175, 80, 0.3);
+        }
+
+        #life-coaches-card.clickable::before {
+            border-top: 20px solid #4caf50;
+        }
+
         /* Cool arrow indicator above dating coaches card */
         .customer-type-card.clickable::before {
             content: '';
@@ -2211,6 +2227,76 @@
             margin-bottom: 20px;
             color: #ff6b35;
             text-align: center;
+        }
+
+        /* Enhanced styling ONLY for the main title "The Ultimate Toolbox for Modern Dating Coaches" */
+        .cold-approach-content>h3:first-of-type {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #2196f3 0%, #42a5f5 50%, #64b5f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            text-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            position: relative;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        /* Fallback for browsers that don't support background-clip: text */
+        @supports not (-webkit-background-clip: text) {
+            .cold-approach-content>h3:first-of-type {
+                color: #2196f3;
+                text-shadow: 0 4px 8px rgba(33, 150, 243, 0.3), 0 0 20px rgba(33, 150, 243, 0.2);
+            }
+        }
+
+        /* Subtle glow animation */
+        @keyframes titleGlow {
+            0% {
+                filter: drop-shadow(0 0 5px rgba(33, 150, 243, 0.3));
+                transform: scale(1);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.5));
+                transform: scale(1.02);
+            }
+        }
+
+        /* Add a subtle background accent */
+        .cold-approach-content>h3:first-of-type::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(ellipse, rgba(33, 150, 243, 0.1) 0%, transparent 70%);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Mobile responsive adjustments for main title only */
+        @media (max-width: 768px) {
+            .cold-approach-content>h3:first-of-type {
+                font-size: 2rem;
+                letter-spacing: 0.3px;
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cold-approach-content>h3:first-of-type {
+                font-size: 1.8rem;
+                letter-spacing: 0.2px;
+                margin-bottom: 20px;
+            }
         }
 
         .cold-approach-content .stats-subtitle {
@@ -2419,6 +2505,99 @@
             }
         }
 
+        /* Hidden Life Coaches Section */
+        .life-coaches-content {
+            display: none;
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .life-coaches-content.visible {
+            display: block;
+        }
+
+        .life-coaches-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #4caf50;
+            text-align: center;
+        }
+
+        /* Enhanced styling ONLY for the main title "The Complete Journey Framework for Life Coaches" */
+        .life-coaches-content>h3:first-of-type {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 50%, #81c784 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            text-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            position: relative;
+            animation: titleGlowGreen 3s ease-in-out infinite alternate;
+        }
+
+        /* Fallback for browsers that don't support background-clip: text */
+        @supports not (-webkit-background-clip: text) {
+            .life-coaches-content>h3:first-of-type {
+                color: #4caf50;
+                text-shadow: 0 4px 8px rgba(76, 175, 80, 0.3), 0 0 20px rgba(76, 175, 80, 0.2);
+            }
+        }
+
+        /* Green glow animation for Life Coaches */
+        @keyframes titleGlowGreen {
+            0% {
+                filter: drop-shadow(0 0 5px rgba(76, 175, 80, 0.3));
+                transform: scale(1);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.5));
+                transform: scale(1.02);
+            }
+        }
+
+        /* Add a subtle green background accent */
+        .life-coaches-content>h3:first-of-type::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(ellipse, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Mobile responsive adjustments for Life Coaches main title only */
+        @media (max-width: 768px) {
+            .life-coaches-content>h3:first-of-type {
+                font-size: 2rem;
+                letter-spacing: 0.3px;
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .life-coaches-content>h3:first-of-type {
+                font-size: 1.8rem;
+                letter-spacing: 0.2px;
+                margin-bottom: 20px;
+            }
+        }
+
         /* Mobile responsive */
         @media (max-width: 768px) {
             .customer-types-grid {
@@ -2545,11 +2724,10 @@
                         <span>c</span><span>l</span><span>i</span><span>c</span><span>k</span><span>&nbsp;</span><span>h</span><span>e</span><span>r</span><span>e</span><span>&nbsp;</span><span>f</span><span>o</span><span>r</span><span>&nbsp;</span><span>t</span><span>h</span><span>e</span><span>&nbsp;</span><span>g</span><span>i</span><span>s</span><span>t</span>
                     </a>
                 </div>
-                <p>Help coaches build deeper client relationships and recurring revenue through their own branded
-                    coaching apps.</p>
+                <p>Stop Losing Clients. Build Recurring Revenue With Your Own Branded App.</p>
                 <div class="cta-buttons">
                     <a href="mailto:joe@approach-coach.com?subject=Approach App - Coach Interest" class="cta-button">
-                        Get Early Access
+                        Get in Touch!
                     </a>
                     <a href="https://calendly.com/triumphserum" target="_blank" class="cta-secondary">
                         Schedule a Demo
@@ -2683,18 +2861,6 @@
                 <div class="benefit-card">
                     <div class="benefit-header">
                         <div class="benefit-icon">
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                        <h3 class="benefit-title">Build Your Brand</h3>
-                    </div>
-                    <p class="benefit-description">Expand your social media presence through the app. Your clients
-                        become
-                        walking testimonials while you establish yourself as the go-to expert in your niche.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-header">
-                        <div class="benefit-icon">
                             <i class="fas fa-clock"></i>
                         </div>
                         <h3 class="benefit-title">Daily Presence</h3>
@@ -2713,74 +2879,6 @@
                     <p class="benefit-description">Give your clients a practical tool to actually implement what you
                         teach.
                         Bridge the gap between learning and doing with real-world application support.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-header">
-                        <div class="benefit-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h3 class="benefit-title">Data-Driven Results</h3>
-                    </div>
-                    <p class="benefit-description">Track your clients' progress with detailed analytics. See what's
-                        working, identify areas for improvement, and prove your coaching effectiveness.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- App Features Section -->
-    <section class="app-features scroll-reveal">
-        <div class="container">
-            <h2>The <span class="highlight">Complete Platform</span> for Modern Coaches</h2>
-            <p class="features-subtitle">Everything you need to transform your coaching practice and help your clients
-                succeed in real-world interactions.</p>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="feature-title">Support Hub</h3>
-                    <p class="feature-description">Real-time guidance system you control. Your clients get instant
-                        access to your advice exactly when they need it - before, during, and after approaches.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h3 class="feature-title">Training Modules</h3>
-                    <p class="feature-description">Create custom tasks and challenges that build confidence
-                        systematically. From beginner exercises to advanced social dynamics - you design the journey.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3 class="feature-title">Direct Communication</h3>
-                    <p class="feature-description">Private messaging and group features that keep you connected with
-                        your clients. Build a community around your coaching methodology.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-book-open"></i>
-                    </div>
-                    <h3 class="feature-title">Smart Journaling</h3>
-                    <p class="feature-description">Your clients track their progress with guided journaling. You get
-                        insights into their mindset, challenges, and breakthroughs.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <h3 class="feature-title">Daily Inspirations</h3>
-                    <p class="feature-description">Your motivational content delivered automatically. Keep your clients
-                        motivated and focused on their goals every single day.</p>
                 </div>
             </div>
         </div>
@@ -2809,18 +2907,18 @@
                     </ul>
                 </div>
 
-                <div class="customer-type-card">
+                <div class="customer-type-card clickable" id="life-coaches-card">
                     <div class="customer-type-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
                     <h3 class="customer-type-title">Life Coaches</h3>
-                    <p class="customer-type-description">Guide clients through personal transformation and help them
-                        achieve their life goals.</p>
+                    <p class="customer-type-description">Guide clients through structured journey frameworks and daily
+                        practice systems that create lasting transformation.</p>
                     <ul class="customer-type-features">
-                        <li>Goal setting and tracking</li>
-                        <li>Daily motivation and support</li>
-                        <li>Personal development plans</li>
-                        <li>Mindset transformation tools</li>
+                        <li>Structured transformation path</li>
+                        <li>Guided tasks and reflections</li>
+                        <li>Voice and guidance at scale</li>
+                        <li>Progress tracking and milestones</li>
                     </ul>
                 </div>
 
@@ -2850,73 +2948,97 @@
 
             <!-- Hidden Cold Approach Content -->
             <div id="cold-approach-content" class="cold-approach-content">
-                <h3>Why Cold Approach is Your Superpower</h3>
-                <p class="stats-subtitle">In 2025, while everyone else swipes endlessly with terrible odds, you're
-                    mastering a skill that less than 1% of men have. Here's why this changes everything.</p>
-
-                <div class="cold-approach-stats-grid">
-                    <div class="cold-approach-stat-card">
-                        <div class="cold-approach-stat-icon">
-                            <i class="fas fa-mobile-alt"></i>
+                <h3>The Ultimate Toolbox for Modern Dating Coaches</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
                         </div>
-                        <div class="cold-approach-stat-number">1-3%</div>
-                        <div class="cold-approach-stat-title">Dating App Success Rate</div>
-                        <div class="cold-approach-stat-description">Average match rate on dating apps</div>
+                        <h3 class="feature-title">Support Hub</h3>
+                        <p class="feature-description">Real-time guidance system you control. Your clients get instant
+                            access to your advice exactly when they need it - before, during, and after approaches.</p>
                     </div>
 
-                    <div class="cold-approach-stat-card">
-                        <div class="cold-approach-stat-icon">
-                            <i class="fas fa-comments"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-dumbbell"></i>
                         </div>
-                        <div class="cold-approach-stat-number">20-40%</div>
-                        <div class="cold-approach-stat-title">Cold Approach Success Rate</div>
-                        <div class="cold-approach-stat-description">Positive response rate when done right</div>
+                        <h3 class="feature-title">Training Modules</h3>
+                        <p class="feature-description">Create custom tasks and challenges that build confidence
+                            systematically. From beginner exercises to advanced social dynamics - you design the
+                            journey.
+                        </p>
                     </div>
 
-                    <div class="cold-approach-stat-card">
-                        <div class="cold-approach-stat-icon">
-                            <i class="fas fa-users"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-book-open"></i>
                         </div>
-                        <div class="cold-approach-stat-number">&lt;1%</div>
-                        <div class="cold-approach-stat-title">Men Who Can Approach</div>
-                        <div class="cold-approach-stat-description">Percentage of men confident enough to approach</div>
+                        <h3 class="feature-title">Smart Journaling</h3>
+                        <p class="feature-description">Your clients track their progress with guided journaling. You get
+                            insights into their mindset, challenges, and breakthroughs.</p>
                     </div>
 
-                    <div class="cold-approach-stat-card">
-                        <div class="cold-approach-stat-icon">
-                            <i class="fas fa-chart-line"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sun"></i>
                         </div>
-                        <div class="cold-approach-stat-number">1000%+</div>
-                        <div class="cold-approach-stat-title">Improvement Potential</div>
-                        <div class="cold-approach-stat-description">Your odds increase compared to apps</div>
+                        <h3 class="feature-title">Daily Inspirations</h3>
+                        <p class="feature-description">Your motivational content delivered automatically. Keep your
+                            clients
+                            motivated and focused on their goals every single day.</p>
                     </div>
-                </div>
-
-                <div class="cold-approach-reality">
-                    <h4><i class="fas fa-chart-bar"></i> The Dating App Reality</h4>
-                    <p>Dating apps have created a massive imbalance. The top 10% of men get 90% of the matches, while
-                        average guys get virtually nothing. Even when you do match, you're competing with dozens of
-                        other men for her attention.</p>
-                    <p><strong>But here's the game-changer:</strong> When you approach a woman in person, you have her
-                        complete attention. There's no swiping, no competition in that moment - just you, her, and the
-                        connection you create.</p>
-                    <div class="cold-approach-game-changer">
-                        This single skill gives you access to women who would never see your dating profile.
-                    </div>
-                </div>
-
-                <div class="cold-approach-cta">
-                    <a href="https://calendly.com/triumphserum" target="_blank" class="book-appointment-btn">
-                        📅 Book Your Dating Coach Consultation
-                    </a>
-                    <p class="cta-subtitle">Ready to master cold approach? Let's discuss how our platform can transform
-                        your dating coaching business.</p>
                 </div>
 
                 <button class="close-content-btn" onclick="toggleColdApproachContent()">Close</button>
             </div>
-        </div>
+
+            <!-- Hidden Life Coaches Content -->
+            <div id="life-coaches-content" class="life-coaches-content">
+                <h3>The Complete Journey Framework for Life Coaches</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h3 class="feature-title">🧭 Journey</h3>
+                        <p class="feature-description">Defines the client's transformation path through structured
+                            levels and phases, giving meaning and direction to their progress over time.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="feature-title">🔁 Daily Practice</h3>
+                        <p class="feature-description">Turns coaching into daily action with guided tasks and
+                            reflections that build habits, consistency, and real behavioral change.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h3 class="feature-title">🎧 Coach Presence</h3>
+                        <p class="feature-description">Delivers the coach's voice, mindset, and guidance at scale
+                            through messages and audio, creating connection without 1:1 sessions.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3 class="feature-title">Path</h3>
+                        <p class="feature-description">Shows the path and the progress the user has made along the way,
+                            and the milestones that he overcame and learned.</p>
+                    </div>
+                </div>
+
+                <button class="close-content-btn" onclick="toggleLifeCoachesContent()">Close</button>
+            </div>
     </section>
+
+
 
     <!-- Final CTA Section -->
     <section class="final-cta">
@@ -2927,27 +3049,28 @@
 
             <div class="cta-buttons">
                 <a href="mailto:joe@approach-coach.com?subject=Approach App - Coach Partnership" class="cta-button">
-                    Get Early Access
+                    Get in Touch!
                 </a>
                 <a href="https://calendly.com/triumphserum" target="_blank" class="cta-secondary">
                     Schedule a Demo
-                </a>
-                <a href="https://www.linkedin.com/company/109572940" target="_blank" class="cta-secondary">
-                    Connect on LinkedIn
                 </a>
             </div>
 
             <div class="contact-info">
                 <a href="mailto:joe@approach-coach.com" class="contact-item">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope" style="color: white; font-size: 2rem;"></i>
                     joe@approach-coach.com
                 </a>
                 <a href="https://www.instagram.com/approachcoachapp/" target="_blank" class="contact-item">
-                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-instagram" style="color: #E4405F; font-size: 2rem;"></i>
                     @approachcoachapp
                 </a>
+                <a href="https://www.tiktok.com/@approach.coach" target="_blank" class="contact-item">
+                    <i class="fab fa-tiktok" style="color: #000000; font-size: 2rem;"></i>
+                    @approach.coach
+                </a>
                 <a href="https://www.linkedin.com/company/109572940" target="_blank" class="contact-item">
-                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-linkedin" style="color: #0077B5; font-size: 2rem;"></i>
                     Triumph Joe
                 </a>
             </div>
@@ -3907,6 +4030,30 @@
                 }
             };
 
+            // Life Coaches Content Toggle Function
+            window.toggleLifeCoachesContent = function () {
+                const content = document.getElementById('life-coaches-content');
+                const card = document.getElementById('life-coaches-card');
+
+                if (content.classList.contains('visible')) {
+                    content.classList.remove('visible');
+                    card.style.background = 'rgba(255, 255, 255, 0.95)';
+                    card.style.border = 'none';
+                } else {
+                    content.classList.add('visible');
+                    card.style.background = 'rgba(76, 175, 80, 0.1)';
+                    card.style.border = '2px solid rgba(76, 175, 80, 0.3)';
+
+                    // Scroll to the content smoothly
+                    setTimeout(() => {
+                        content.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 100);
+                }
+            };
+
             // Dating Coaches Card Click Handler
             const datingCoachesCard = document.getElementById('dating-coaches-card');
 
@@ -3927,6 +4074,28 @@
                 datingCoachesCard.setAttribute('tabindex', '0');
                 datingCoachesCard.setAttribute('role', 'button');
                 datingCoachesCard.setAttribute('aria-label', 'Click to learn more about dating coaching features');
+            }
+
+            // Life Coaches Card Click Handler
+            const lifeCoachesCard = document.getElementById('life-coaches-card');
+
+            if (lifeCoachesCard) {
+                lifeCoachesCard.addEventListener('click', function () {
+                    window.toggleLifeCoachesContent();
+                });
+
+                // Add keyboard accessibility
+                lifeCoachesCard.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        window.toggleLifeCoachesContent();
+                    }
+                });
+
+                // Make it focusable for keyboard navigation
+                lifeCoachesCard.setAttribute('tabindex', '0');
+                lifeCoachesCard.setAttribute('role', 'button');
+                lifeCoachesCard.setAttribute('aria-label', 'Click to learn more about life coaching features');
             }
         });
     </script>

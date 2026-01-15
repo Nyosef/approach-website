@@ -563,6 +563,383 @@
             margin-left: 8px;
         }
 
+        /* Grayed out cards for non-clickable items */
+        .customer-type-card:not(.clickable) {
+            background: rgba(255, 255, 255, 0.7);
+            opacity: 0.8;
+        }
+
+        .customer-type-card:not(.clickable):hover {
+            background: rgba(255, 255, 255, 0.75);
+            opacity: 0.85;
+        }
+
+        .customer-type-card.clickable {
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Fixed hover effect - better contrast with white background */
+        .customer-type-card.clickable:hover {
+            background: rgba(255, 255, 255, 0.98);
+            border: 3px solid #ff6b35;
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Active/pressed state for cards - more visible effect */
+        .customer-type-card.clickable:active {
+            transform: translateY(0px) scale(0.98);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.6);
+            background: rgba(255, 107, 53, 0.05);
+            border: 2px solid rgba(255, 107, 53, 0.4);
+        }
+
+        #life-coaches-card.clickable:active {
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.6);
+            background: rgba(76, 175, 80, 0.05);
+            border: 2px solid rgba(76, 175, 80, 0.4);
+        }
+
+        /* Cool button in the center of the card - moved further down */
+        .customer-type-card.clickable::after {
+            content: '🚀 חקור אימון דייטים';
+            position: absolute;
+            bottom: 5px;
+            right: 50%;
+            transform: translateX(50%);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+            opacity: 0;
+            transition: all 0.4s ease;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8a50 100%);
+            padding: 6px 14px;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .customer-type-card.clickable:hover::after {
+            opacity: 1;
+            transform: translateX(50%) translateY(-1px);
+        }
+
+        /* Life Coaches specific button */
+        #life-coaches-card.clickable::after {
+            content: '🌟 חקור אימון חיים';
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        #life-coaches-card.clickable:hover {
+            border: 3px solid #4caf50;
+            box-shadow: 0 25px 60px rgba(76, 175, 80, 0.3);
+        }
+
+        #life-coaches-card.clickable::before {
+            border-top: 20px solid #4caf50;
+        }
+
+        /* Cool arrow indicator above cards - RTL adjusted */
+        .customer-type-card.clickable::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 20px solid #ff6b35;
+            opacity: 0;
+            transition: all 0.4s ease;
+            animation: arrowBounce 2s ease-in-out infinite;
+        }
+
+        .customer-type-card.clickable:hover::before {
+            opacity: 1;
+            top: -30px;
+        }
+
+        /* Arrow bounce animation */
+        @keyframes arrowBounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(50%) translateY(-5px);
+            }
+
+            60% {
+                transform: translateX(50%) translateY(-3px);
+            }
+        }
+
+        /* Show arrow on page load for cards */
+        .customer-type-card.clickable {
+            animation: showArrowHint 3s ease-in-out 2s;
+        }
+
+        @keyframes showArrowHint {
+
+            0%,
+            90%,
+            100% {
+                transform: translateY(-5px);
+            }
+
+            10%,
+            80% {
+                transform: translateY(-5px);
+            }
+
+            20%,
+            70% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .customer-type-card.clickable::before {
+            opacity: 0.7;
+            animation: arrowBounce 2s ease-in-out infinite, fadeInArrow 1s ease-out 2s;
+        }
+
+        @keyframes fadeInArrow {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Hidden Dating Coaches Section */
+        .cold-approach-content {
+            display: none;
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .cold-approach-content.visible {
+            display: block;
+        }
+
+        .cold-approach-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ff6b35;
+            text-align: center;
+        }
+
+        /* Enhanced styling ONLY for the main title "ארגז הכלים האולטימטיבי למאמני דייטים מודרניים" */
+        .cold-approach-content>h3:first-of-type {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #2196f3 0%, #42a5f5 50%, #64b5f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            text-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            position: relative;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        /* Fallback for browsers that don't support background-clip: text */
+        @supports not (-webkit-background-clip: text) {
+            .cold-approach-content>h3:first-of-type {
+                color: #2196f3;
+                text-shadow: 0 4px 8px rgba(33, 150, 243, 0.3), 0 0 20px rgba(33, 150, 243, 0.2);
+            }
+        }
+
+        /* Subtle glow animation */
+        @keyframes titleGlow {
+            0% {
+                filter: drop-shadow(0 0 5px rgba(33, 150, 243, 0.3));
+                transform: scale(1);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.5));
+                transform: scale(1.02);
+            }
+        }
+
+        /* Add a subtle background accent */
+        .cold-approach-content>h3:first-of-type::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(ellipse, rgba(33, 150, 243, 0.1) 0%, transparent 70%);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Mobile responsive adjustments for main title only */
+        @media (max-width: 768px) {
+            .cold-approach-content>h3:first-of-type {
+                font-size: 2rem;
+                letter-spacing: 0.3px;
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cold-approach-content>h3:first-of-type {
+                font-size: 1.8rem;
+                letter-spacing: 0.2px;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Hidden Life Coaches Section */
+        .life-coaches-content {
+            display: none;
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .life-coaches-content.visible {
+            display: block;
+        }
+
+        .life-coaches-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #4caf50;
+            text-align: center;
+        }
+
+        /* Enhanced styling ONLY for the main title "מסגרת המסע השלמה למאמני חיים" */
+        .life-coaches-content>h3:first-of-type {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 50%, #81c784 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            text-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            position: relative;
+            animation: titleGlowGreen 3s ease-in-out infinite alternate;
+        }
+
+        /* Fallback for browsers that don't support background-clip: text */
+        @supports not (-webkit-background-clip: text) {
+            .life-coaches-content>h3:first-of-type {
+                color: #4caf50;
+                text-shadow: 0 4px 8px rgba(76, 175, 80, 0.3), 0 0 20px rgba(76, 175, 80, 0.2);
+            }
+        }
+
+        /* Green glow animation for Life Coaches */
+        @keyframes titleGlowGreen {
+            0% {
+                filter: drop-shadow(0 0 5px rgba(76, 175, 80, 0.3));
+                transform: scale(1);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.5));
+                transform: scale(1.02);
+            }
+        }
+
+        /* Add a subtle green background accent */
+        .life-coaches-content>h3:first-of-type::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(ellipse, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Mobile responsive adjustments for Life Coaches main title only */
+        @media (max-width: 768px) {
+            .life-coaches-content>h3:first-of-type {
+                font-size: 2rem;
+                letter-spacing: 0.3px;
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .life-coaches-content>h3:first-of-type {
+                font-size: 1.8rem;
+                letter-spacing: 0.2px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .close-content-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .close-content-btn:hover {
+            background: #d32f2f;
+            transform: translateY(-1px);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .contact-us-section {
             background: rgba(255, 255, 255, 0.95);
             color: #333;
@@ -881,12 +1258,12 @@
 
         <div class="container">
             <div class="hero-content fade-in-up">
-                <h1>הפוך את האימון שלך ל<span class="highlight">עסק רווחי</span> עם אפליקציית Approach
+                <h1>להפוך את האימון שלך ל<span class="highlight">עסק רווחי</span> עם אפליקציית Approach
                 </h1>
-                <p>עזור למאמנים לבנות קשרים עמוקים יותר עם לקוחות והכנסות חוזרות דרך אפליקציות אימון ממותגות.</p>
+                <p>להפסיק לאבד לקוחות. לבנות הכנסה חוזרת עם האפליקציה הממותגת שלך.</p>
                 <div class="cta-buttons">
                     <a href="mailto:joe@approach-coach.com?subject=Approach App - עניין מאמן" class="cta-button">
-                        קבל גישה מוקדמת
+                        צור קשר!
                     </a>
                     <a href="https://calendly.com/triumphserum" target="_blank" class="cta-secondary">
                         קבע פגישת הדגמה
@@ -938,17 +1315,6 @@
                 <div class="benefit-card">
                     <div class="benefit-header">
                         <div class="benefit-icon">
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                        <h3 class="benefit-title">בנה את המותג שלך</h3>
-                    </div>
-                    <p class="benefit-description">הרחב את הנוכחות שלך ברשתות החברתיות דרך האפליקציה. הלקוחות שלך הופכים
-                        להמלצות הולכות ואתה מבסס את עצמך כמומחה המוביל בתחום שלך.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-header">
-                        <div class="benefit-icon">
                             <i class="fas fa-clock"></i>
                         </div>
                         <h3 class="benefit-title">נוכחות יומית</h3>
@@ -967,73 +1333,6 @@
                     <p class="benefit-description">תן ללקוחות שלך כלי מעשי ליישם בפועל את מה שאתה מלמד. גשר על הפער בין
                         למידה לעשייה עם תמיכה ביישום בעולם האמיתי.</p>
                 </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-header">
-                        <div class="benefit-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h3 class="benefit-title">תוצאות מבוססות נתונים</h3>
-                    </div>
-                    <p class="benefit-description">עקוב אחר ההתקדמות של הלקוחות שלך עם אנליטיקה מפורטת. ראה מה עובד, זהה
-                        תחומים לשיפור והוכח את יעילות האימון שלך.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- App Features Section -->
-    <section class="app-features scroll-reveal">
-        <div class="container">
-            <h2>ה<span class="highlight">פלטפורמה המלאה</span> למאמנים מודרניים</h2>
-            <p class="features-subtitle">כל מה שאתה צריך כדי להפוך את תרגול האימון שלך ולעזור ללקוחות שלך להצליח
-                באינטראקציות בעולם האמיתי.</p>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="feature-title">מרכז תמיכה</h3>
-                    <p class="feature-description">מערכת הדרכה בזמן אמת שאתה שולט בה. הלקוחות שלך מקבלים גישה מיידית
-                        לעצות שלך בדיוק כשהם צריכים - לפני, במהלך ואחרי גישות.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h3 class="feature-title">מודולי אימון</h3>
-                    <p class="feature-description">צור משימות ואתגרים מותאמים אישית שבונים ביטחון באופן שיטתי. מתרגילים
-                        למתחילים ועד דינמיקה חברתית מתקדמת - אתה מעצב את המסע.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3 class="feature-title">תקשורת ישירה</h3>
-                    <p class="feature-description">הודעות פרטיות ותכונות קבוצה ששומרות אותך מחובר עם הלקוחות שלך. בנה
-                        קהילה סביב מתודולוגיית האימון שלך.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-book-open"></i>
-                    </div>
-                    <h3 class="feature-title">יומן חכם</h3>
-                    <p class="feature-description">הלקוחות שלך עוקבים אחר ההתקדמות שלהם עם יומן מודרך. אתה מקבל תובנות
-                        על הלך הרוח, האתגרים והפריצות שלהם.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <h3 class="feature-title">השראות יומיות</h3>
-                    <p class="feature-description">התוכן המוטיבציוני שלך מועבר אוטומטית. שמור על הלקוחות שלך מוטיבים
-                        וממוקדים במטרות שלהם כל יום.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -1046,7 +1345,7 @@
                 מתאימה לסגנון האימון שלך ובונה את המותג שלך.</p>
 
             <div class="customer-types-grid">
-                <div class="customer-type-card">
+                <div class="customer-type-card clickable" id="dating-coaches-card">
                     <div class="customer-type-icon">
                         <i class="fas fa-heart"></i>
                     </div>
@@ -1054,25 +1353,25 @@
                     <p class="customer-type-description">עזור ללקוחות לשלוט בקשרים בעולם האמיתי ולבנות ביטחון בדייטים
                         ויחסים.</p>
                     <ul class="customer-type-features">
-                        <li>מודולי אימון לגישה קרה</li>
-                        <li>תרגילים לבניית ביטחון</li>
-                        <li>הדרכה בזמן אמת לדייטים</li>
-                        <li>פיתוח כישורים חברתיים</li>
+                        <li>מסלול שינוי מובנה</li>
+                        <li>משימות והרהורים מונחים</li>
+                        <li>קול והדרכה בקנה מידה</li>
+                        <li>מעקב התקדמות ואבני דרך</li>
                     </ul>
                 </div>
 
-                <div class="customer-type-card">
+                <div class="customer-type-card clickable" id="life-coaches-card">
                     <div class="customer-type-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
                     <h3 class="customer-type-title">מאמני חיים</h3>
-                    <p class="customer-type-description">הדרך ללקוחות דרך שינוי אישי ועזור להם להשיג את מטרות החיים
-                        שלהם.</p>
+                    <p class="customer-type-description">הדרך ללקוחות דרך מסגרות מסע מובנות ומערכות תרגול יומיות שיוצרות
+                        שינוי מתמשך.</p>
                     <ul class="customer-type-features">
-                        <li>הגדרה ומעקב אחר מטרות</li>
-                        <li>מוטיבציה ותמיכה יומית</li>
-                        <li>תוכניות פיתוח אישי</li>
-                        <li>כלים לשינוי דפוסי חשיבה</li>
+                        <li>מסלול שינוי מובנה</li>
+                        <li>משימות והרהורים מונחים</li>
+                        <li>קול והדרכה בקנה מידה</li>
+                        <li>מעקב התקדמות ואבני דרך</li>
                     </ul>
                 </div>
 
@@ -1092,6 +1391,94 @@
                 </div>
             </div>
 
+            <!-- Hidden Dating Coaches Content -->
+            <div class="cold-approach-content" id="cold-approach-content">
+                <h3>ארגז הכלים האולטימטיבי למאמני דייטים מודרניים</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="feature-title">מרכז תמיכה</h3>
+                        <p class="feature-description">מערכת הדרכה בזמן אמת שאתה שולט בה. הלקוחות שלך מקבלים גישה מיידית
+                            לעצות שלך בדיוק כשהם צריכים - לפני, במהלך ואחרי גישות.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3 class="feature-title">מודולי אימון</h3>
+                        <p class="feature-description">צור משימות ואתגרים מותאמים אישית שבונים ביטחון באופן שיטתי.
+                            מתרגילים למתחילים ועד דינמיקה חברתית מתקדמת - אתה מעצב את המסע.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="feature-title">יומן חכם</h3>
+                        <p class="feature-description">הלקוחות שלך עוקבים אחר ההתקדמות שלהם עם יומן מונחה. אתה מקבל
+                            תובנות על הלך הרוח, האתגרים והפריצות שלהם.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3 class="feature-title">השראה יומית</h3>
+                        <p class="feature-description">התוכן המוטיבציוני שלך מועבר באופן אוטומטי. שמור על הלקוחות שלך
+                            מוטיבים וממוקדים במטרות שלהם כל יום.</p>
+                    </div>
+                </div>
+
+                <button class="close-content-btn" onclick="toggleColdApproachContent()">סגור</button>
+            </div>
+
+            <!-- Hidden Life Coaches Content -->
+            <div class="life-coaches-content" id="life-coaches-content">
+                <h3>מסגרת המסע השלמה למאמני חיים</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h3 class="feature-title">🧭 מסע</h3>
+                        <p class="feature-description">מגדיר את נתיב השינוי של הלקוח דרך רמות ושלבים מובנים, נותן משמעות
+                            וכיוון להתקדמות שלהם לאורך זמן.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="feature-title">🔁 תרגול יומי</h3>
+                        <p class="feature-description">הופך אימון לפעולה יומית עם משימות והרהורים מונחים שבונים הרגלים,
+                            עקביות ושינוי התנהגותי אמיתי.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h3 class="feature-title">🎧 נוכחות המאמן</h3>
+                        <p class="feature-description">מעביר את הקול, הלך הרוח וההדרכה של המאמן בקנה מידה דרך הודעות
+                            ואודיו, יוצר חיבור ללא מפגשים אחד על אחד.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3 class="feature-title">נתיב</h3>
+                        <p class="feature-description">מציג את הנתיב וההתקדמות שהמשתמש עשה לאורך הדרך, ואת אבני הדרך
+                            שהוא התגבר עליהן ולמד.</p>
+                    </div>
+                </div>
+
+                <button class="close-content-btn" onclick="toggleLifeCoachesContent()">סגור</button>
+            </div>
+
             <div class="contact-us-section">
                 <h3>מעוניין שגם סוג האימון שלך יופיע כאן?</h3>
                 <p>אנחנו תמיד מרחיבים כדי לתמוך בעוד התמחויות אימון. ספר לנו מה אתה צריך!</p>
@@ -1102,6 +1489,8 @@
         </div>
     </section>
 
+
+
     <!-- Final CTA Section -->
     <section class="final-cta">
         <div class="container">
@@ -1111,27 +1500,28 @@
 
             <div class="cta-buttons">
                 <a href="mailto:joe@approach-coach.com?subject=Approach App - שותפות מאמן" class="cta-button">
-                    קבל גישה מוקדמת
+                    צור קשר!
                 </a>
                 <a href="https://calendly.com/triumphserum" target="_blank" class="cta-secondary">
                     קבע פגישת הדגמה
-                </a>
-                <a href="https://www.linkedin.com/company/109572940" target="_blank" class="cta-secondary">
-                    התחבר בלינקדאין
                 </a>
             </div>
 
             <div class="contact-info">
                 <a href="mailto:joe@approach-coach.com" class="contact-item">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope" style="color: white; font-size: 2rem;"></i>
                     joe@approach-coach.com
                 </a>
                 <a href="https://www.instagram.com/approachcoachapp/" target="_blank" class="contact-item">
-                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-instagram" style="color: #E4405F; font-size: 2rem;"></i>
                     @approachcoachapp
                 </a>
+                <a href="https://www.tiktok.com/@approach.coach" target="_blank" class="contact-item">
+                    <i class="fab fa-tiktok" style="color: #000000; font-size: 2rem;"></i>
+                    @approach.coach
+                </a>
                 <a href="https://www.linkedin.com/company/109572940" target="_blank" class="contact-item">
-                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-linkedin" style="color: #0077B5; font-size: 2rem;"></i>
                     Triumph Joe
                 </a>
             </div>
@@ -1415,6 +1805,65 @@
         document.addEventListener('DOMContentLoaded', () => {
             const soundController = new SoundButtonController();
             window.soundController = soundController;
+        });
+
+        // Hebrew Expandable Cards Functionality
+        function toggleColdApproachContent() {
+            const content = document.getElementById('cold-approach-content');
+            const card = document.getElementById('dating-coaches-card');
+
+            if (content.classList.contains('visible')) {
+                content.classList.remove('visible');
+                card.style.transform = 'translateY(-5px)';
+            } else {
+                // Hide other content first
+                const lifeCoachesContent = document.getElementById('life-coaches-content');
+                lifeCoachesContent.classList.remove('visible');
+
+                content.classList.add('visible');
+                card.style.transform = 'translateY(-8px)';
+
+                // Scroll to content
+                setTimeout(() => {
+                    content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        }
+
+        function toggleLifeCoachesContent() {
+            const content = document.getElementById('life-coaches-content');
+            const card = document.getElementById('life-coaches-card');
+
+            if (content.classList.contains('visible')) {
+                content.classList.remove('visible');
+                card.style.transform = 'translateY(-5px)';
+            } else {
+                // Hide other content first
+                const coldApproachContent = document.getElementById('cold-approach-content');
+                coldApproachContent.classList.remove('visible');
+
+                content.classList.add('visible');
+                card.style.transform = 'translateY(-8px)';
+
+                // Scroll to content
+                setTimeout(() => {
+                    content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        }
+
+        // Add click event listeners for Hebrew cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const datingCoachesCard = document.getElementById('dating-coaches-card');
+            const lifeCoachesCard = document.getElementById('life-coaches-card');
+
+            if (datingCoachesCard) {
+                datingCoachesCard.addEventListener('click', toggleColdApproachContent);
+            }
+
+            if (lifeCoachesCard) {
+                lifeCoachesCard.addEventListener('click', toggleLifeCoachesContent);
+            }
         });
     </script>
 </body>
