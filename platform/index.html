@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform - Approach Coach | White-Label Coaching Platform</title>
+    <meta name="description"
+        content="Approach Coach gives coaches a complete platform to run branded mobile apps, guide clients daily, and grow recurring subscription revenue.">
+    <link rel="canonical" href="https://www.approach-coach.com/platform/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 28px 20px 60px;
+        }
+
+        .crumbs {
+            font-size: 14px;
+            opacity: 0.85;
+            margin-bottom: 18px;
+        }
+
+        .crumbs a {
+            color: #fff;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        h1 .highlight {
+            color: #ff6b35;
+        }
+
+        .intro {
+            opacity: 0.95;
+            max-width: 700px;
+            margin-bottom: 20px;
+        }
+
+        .intro .highlight {
+            color: #ff6b35;
+            font-weight: 700;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+
+        .expand-section {
+            transition: transform 0.28s ease, box-shadow 0.28s ease, background-color 0.28s ease;
+            transform-origin: center top;
+            will-change: transform;
+        }
+
+        .expand-section:hover,
+        .expand-section:active,
+        .expand-section.is-pressed {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.14);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+            z-index: 2;
+            position: relative;
+        }
+
+        .section h2 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .section p {
+            font-size: 0.95rem;
+            opacity: 0.92;
+        }
+
+        .list {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+
+        .list li {
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 3px solid #ff6b35;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 0.93rem;
+        }
+
+        .animated-section .list li {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.2s ease;
+        }
+
+        .animated-section.visible .list li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animated-section.visible .list li:nth-child(1) { transition-delay: 0.05s; }
+        .animated-section.visible .list li:nth-child(2) { transition-delay: 0.15s; }
+        .animated-section.visible .list li:nth-child(3) { transition-delay: 0.25s; }
+        .animated-section.visible .list li:nth-child(4) { transition-delay: 0.35s; }
+        .animated-section.visible .list li:nth-child(5) { transition-delay: 0.45s; }
+
+        .animated-section .list li:hover {
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animated-section .list li {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            .expand-section {
+                transition: none;
+            }
+
+            .expand-section:hover,
+            .expand-section:active,
+            .expand-section.is-pressed {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        .actions {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: #fff;
+            background: #ff6b35;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-weight: 700;
+        }
+
+        .btn.alt {
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .hamburger-menu {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 2000;
+        }
+
+        .hamburger-toggle {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .hamburger-line {
+            width: 18px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .hamburger-nav {
+            position: absolute;
+            top: 48px;
+            right: 0;
+            background: rgba(26, 35, 126, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            min-width: 170px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+        }
+
+        .hamburger-nav[aria-hidden="false"] {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .hamburger-nav ul {
+            list-style: none;
+        }
+
+        .hamburger-nav a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 16px;
+            font-size: 14px;
+        }
+
+        .hamburger-nav a:hover {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+        }
+
+        footer {
+            margin-top: 18px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.approach-coach.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Platform", "item": "https://www.approach-coach.com/platform/"}
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <div class="hamburger-menu">
+        <button class="hamburger-toggle" aria-label="Navigation menu" aria-expanded="false">
+            <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+        </button>
+        <nav class="hamburger-nav" aria-hidden="true">
+            <ul>
+                <li><a href="/platform/">Platform</a></li>
+                <li><a href="/pricing/">Pricing</a></li>
+                <li><a href="/demo/">Demo</a></li>
+                <li><a href="/support/">Support</a></li>
+                <li><a href="/login/">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="container">
+        <nav class="crumbs"><a href="/">Home</a> / Platform</nav>
+
+        <h1>The <span class="highlight">Complete</span> Coaching Platform</h1>
+        <p class="intro">Approach Coach helps you run your coaching business in your <span class="highlight">own branded app</span>, keep clients <span class="highlight">engaged daily</span>, and build <span class="highlight">recurring monthly revenue</span>.</p>
+
+        <section class="section animated-section expand-section" id="why-coaches-section">
+            <h2>Why Coaches Use It</h2>
+            <ul class="list">
+                <li>Coaches stop losing clients with a scalable app when 1:1 is full, between sessions, or after sessions end.</li>
+                <li>Your own app and brand experience.</li>
+                <li>Recurring subscriptions instead of one-time sales only.</li>
+                <li>Daily client engagement with clear progress structure.</li>
+                <li>Scale beyond only 1:1 coaching calls.</li>
+            </ul>
+        </section>
+
+        <section class="section animated-section expand-section" id="coach-types-section">
+            <h2>Perfect for Coach Types</h2>
+            <ul class="list">
+                <li><strong>Dating coaches:</strong> confidence work, accountability, implementation.</li>
+                <li><strong>Life coaches:</strong> structured transformation journeys and milestones.</li>
+                <li><strong>Nutrition coaches:</strong> habit-building and progress tracking.</li>
+                <li><strong>Any niche coach:</strong> adapt the system to your method.</li>
+            </ul>
+        </section>
+
+        <div class="actions">
+            <a class="btn" href="/demo/">See Demo</a>
+            <a class="btn alt" href="/pricing/">View Pricing</a>
+            <a class="btn alt" href="/support/">Get Support</a>
+        </div>
+
+        <footer>Approach Coach platform overview for professional coaches and creators.</footer>
+    </main>
+
+    <script>
+        const toggle = document.querySelector('.hamburger-toggle');
+        const nav = document.querySelector('.hamburger-nav');
+        toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', (!expanded).toString());
+            nav.setAttribute('aria-hidden', expanded.toString());
+        });
+        document.addEventListener('click', (e) => {
+            if (!toggle.contains(e.target) && !nav.contains(e.target)) {
+                toggle.setAttribute('aria-expanded', 'false');
+                nav.setAttribute('aria-hidden', 'true');
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                toggle.setAttribute('aria-expanded', 'false');
+                nav.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        const expandableSections = document.querySelectorAll('.expand-section');
+        expandableSections.forEach((section) => {
+            section.addEventListener('pointerdown', () => {
+                section.classList.add('is-pressed');
+            });
+            section.addEventListener('pointerup', () => {
+                section.classList.remove('is-pressed');
+            });
+            section.addEventListener('pointerleave', () => {
+                section.classList.remove('is-pressed');
+            });
+            section.addEventListener('pointercancel', () => {
+                section.classList.remove('is-pressed');
+            });
+        });
+
+        const animatedSections = document.querySelectorAll('.animated-section');
+        if (animatedSections.length) {
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.25 });
+
+                animatedSections.forEach((section) => observer.observe(section));
+            } else {
+                animatedSections.forEach((section) => section.classList.add('visible'));
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Approach Coach | Coach Dashboard Access</title>
+    <meta name="description"
+        content="Coach portal access page for Approach Coach. Contact us to get your own coaching dashboard.">
+    <link rel="canonical" href="https://www.approach-coach.com/login/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #fff; background: linear-gradient(135deg, #1a237e 0%, #283593 100%); min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+        .card { max-width: 660px; width: 100%; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 16px; padding: 26px; }
+        .crumbs { font-size: 14px; opacity: .86; margin-bottom: 14px; }
+        .crumbs a { color: #fff; }
+        h1 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 10px; }
+        p { margin-bottom: 14px; opacity: .95; }
+        .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn { display: inline-block; text-decoration: none; color: #fff; background: #ff6b35; padding: 10px 14px; border-radius: 10px; font-weight: 700; }
+        .btn.alt { background: rgba(255,255,255,.16); }
+
+        .hamburger-menu { position: fixed; top: 18px; right: 18px; z-index: 2000; }
+        .hamburger-toggle { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); width: 40px; height: 40px; border-radius: 10px; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; }
+        .hamburger-line { width: 18px; height: 2px; background: rgba(255,255,255,.9); }
+        .hamburger-nav { position: absolute; top: 48px; right: 0; background: rgba(26,35,126,.95); border: 1px solid rgba(255,255,255,.2); border-radius: 12px; min-width: 170px; padding: 10px 0; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all .2s ease; }
+        .hamburger-nav[aria-hidden="false"] { opacity: 1; visibility: visible; transform: translateY(0); }
+        .hamburger-nav ul { list-style: none; }
+        .hamburger-nav a { display: block; color: #fff; text-decoration: none; padding: 10px 16px; font-size: 14px; }
+        .hamburger-nav a:hover { background: rgba(255,107,53,.2); color: #ff6b35; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.approach-coach.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Login", "item": "https://www.approach-coach.com/login/"}
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <div class="hamburger-menu">
+        <button class="hamburger-toggle" aria-label="Navigation menu" aria-expanded="false">
+            <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+        </button>
+        <nav class="hamburger-nav" aria-hidden="true">
+            <ul>
+                <li><a href="/platform/">Platform</a></li>
+                <li><a href="/pricing/">Pricing</a></li>
+                <li><a href="/demo/">Demo</a></li>
+                <li><a href="/support/">Support</a></li>
+                <li><a href="/login/">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="card">
+        <nav class="crumbs"><a href="/">Home</a> / Login</nav>
+        <h1>Coach Portal Login</h1>
+        <p>Need your own coaching dashboard?</p>
+        <p>Contact us and we will set up your account and onboarding flow.</p>
+        <div class="actions">
+            <a class="btn" href="mailto:joe@approach-coach.com?subject=Get%20My%20Coaching%20Dashboard">Contact Us</a>
+            <a class="btn alt" href="/support/">Support</a>
+        </div>
+    </main>
+
+    <script>
+        const toggle = document.querySelector('.hamburger-toggle');
+        const nav = document.querySelector('.hamburger-nav');
+        toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', (!expanded).toString());
+            nav.setAttribute('aria-hidden', expanded.toString());
+        });
+        document.addEventListener('click', (e) => {
+            if (!toggle.contains(e.target) && !nav.contains(e.target)) {
+                toggle.setAttribute('aria-expanded', 'false');
+                nav.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+    </script>
+</body>
+
+</html>
