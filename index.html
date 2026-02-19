@@ -220,6 +220,7 @@
         @media (max-width: 768px) {
             .social-links {
                 gap: 15px;
+                margin-right: 54px;
             }
 
             .social-links a {
@@ -234,6 +235,10 @@
 
         /* Hide email first */
         @media (max-width: 560px) {
+            .social-links {
+                margin-right: 48px;
+            }
+
             .social-email {
                 display: none;
             }
@@ -255,6 +260,10 @@
 
         /* Hide LinkedIn next */
         @media (max-width: 500px) {
+            .social-links {
+                margin-right: 42px;
+            }
+
             .social-linkedin {
                 display: none;
             }
@@ -2608,10 +2617,128 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .hamburger-menu {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 2000;
+        }
+
+        .hamburger-toggle {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .hamburger-toggle:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .hamburger-line {
+            width: 18px;
+            height: 2px;
+            border-radius: 1px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.2s ease;
+        }
+
+        .hamburger-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+
+        .hamburger-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .hamburger-nav {
+            position: absolute;
+            top: 48px;
+            right: 0;
+            background: rgba(26, 35, 126, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            min-width: 170px;
+            padding: 10px 0;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s ease;
+        }
+
+        .hamburger-nav[aria-hidden="false"] {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .hamburger-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hamburger-nav a {
+            display: block;
+            padding: 10px 16px;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .hamburger-nav a:hover {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                top: 14px;
+                right: 14px;
+            }
+
+            .hamburger-toggle {
+                width: 36px;
+                height: 36px;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div class="hamburger-menu">
+        <button class="hamburger-toggle" aria-label="Navigation menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        <nav class="hamburger-nav" aria-hidden="true">
+            <ul>
+                <li><a href="/platform/">Platform</a></li>
+                <li><a href="/pricing/">Pricing</a></li>
+                <li><a href="/demo/">Demo</a></li>
+                <li><a href="/support/">Support</a></li>
+                <li><a href="/login/">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -3081,6 +3208,17 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Approach Coach. Transforming coaching through technology.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.75;">
+                <a href="/platform/"
+                    style="color: rgba(255, 255, 255, 0.75); text-decoration: none; margin-right: 16px;">Platform</a>
+                <a href="/pricing/"
+                    style="color: rgba(255, 255, 255, 0.75); text-decoration: none; margin-right: 16px;">Pricing</a>
+                <a href="/demo/"
+                    style="color: rgba(255, 255, 255, 0.75); text-decoration: none; margin-right: 16px;">Demo</a>
+                <a href="/support/"
+                    style="color: rgba(255, 255, 255, 0.75); text-decoration: none; margin-right: 16px;">Support</a>
+                <a href="/login/" style="color: rgba(255, 255, 255, 0.75); text-decoration: none;">Login</a>
+            </p>
             <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.6;">
                 <a href="privacy-policy.html"
                     style="color: rgba(255, 255, 255, 0.6); text-decoration: none; margin-right: 20px;">Privacy
@@ -4096,6 +4234,30 @@
                 lifeCoachesCard.setAttribute('tabindex', '0');
                 lifeCoachesCard.setAttribute('role', 'button');
                 lifeCoachesCard.setAttribute('aria-label', 'Click to learn more about life coaching features');
+            }
+
+            const hamburgerToggle = document.querySelector('.hamburger-toggle');
+            const hamburgerNav = document.querySelector('.hamburger-nav');
+            if (hamburgerToggle && hamburgerNav) {
+                hamburgerToggle.addEventListener('click', () => {
+                    const expanded = hamburgerToggle.getAttribute('aria-expanded') === 'true';
+                    hamburgerToggle.setAttribute('aria-expanded', (!expanded).toString());
+                    hamburgerNav.setAttribute('aria-hidden', expanded.toString());
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!hamburgerToggle.contains(event.target) && !hamburgerNav.contains(event.target)) {
+                        hamburgerToggle.setAttribute('aria-expanded', 'false');
+                        hamburgerNav.setAttribute('aria-hidden', 'true');
+                    }
+                });
+
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape') {
+                        hamburgerToggle.setAttribute('aria-expanded', 'false');
+                        hamburgerNav.setAttribute('aria-hidden', 'true');
+                    }
+                });
             }
         });
     </script>
