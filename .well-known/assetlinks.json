@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.approachapp.prod",
+      "sha256_cert_fingerprints": [
+        "3B:4C:ED:E5:06:02:76:A5:4F:B4:35:3B:F3:85:D7:E2:6D:96:94:66:5E:0A:D9:65:21:E2:EC:6E:B0:AE:02:22"
+      ]
+    }
+  }
+]
