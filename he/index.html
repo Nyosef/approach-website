@@ -1032,6 +1032,44 @@
             opacity: 0.7;
         }
 
+        .personal-note {
+            margin: 12px auto 0;
+            padding: 10px 14px;
+            max-width: 540px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .personal-note-label {
+            opacity: 0.88;
+            font-size: 0.88rem;
+        }
+
+        .personal-note-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255, 107, 53, 0.12);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .personal-note-link:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 107, 53, 0.24);
+        }
+
         /* Sound Button Styles */
         .sound-button {
             background: none;
@@ -1100,6 +1138,11 @@
 
             .benefits-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .personal-note {
+                width: 100%;
+                padding: 10px 12px;
             }
 
             .features-grid {
@@ -1229,7 +1272,7 @@
                         class="social-link social-linkedin">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="mailto:joe@approach-coach.com" aria-label="אימייל" class="social-link social-email">
+                    <a href="mailto:info@approach-coach.com" aria-label="אימייל" class="social-link social-email">
                         <i class="fas fa-envelope"></i>
                     </a>
 
@@ -1262,7 +1305,7 @@
                 </h1>
                 <p>להפסיק לאבד לקוחות. לבנות הכנסה חוזרת עם האפליקציה הממותגת שלך.</p>
                 <div class="cta-buttons">
-                    <a href="mailto:joe@approach-coach.com?subject=Approach App - עניין מאמן" class="cta-button">
+                    <a href="mailto:sales@approach-coach.com?subject=Approach App - עניין מאמן" class="cta-button">
                         צור קשר!
                     </a>
                     <a href="https://calendar.app.google/pPFyGuG3b6bprs7q7" target="_blank" class="cta-secondary">
@@ -1481,7 +1524,7 @@
             <div class="contact-us-section">
                 <h3>מעוניין שגם סוג האימון שלך יופיע כאן?</h3>
                 <p>אנחנו תמיד מרחיבים כדי לתמוך בעוד התמחויות אימון. ספר לנו מה אתה צריך!</p>
-                <a href="mailto:joe@approach-coach.com?subject=בקשה לסוג אימון חדש" class="contact-us-button">
+                <a href="mailto:sales@approach-coach.com?subject=בקשה לסוג אימון חדש" class="contact-us-button">
                     צור קשר כאן
                 </a>
             </div>
@@ -1498,7 +1541,7 @@
                 דייטים כאן.</p>
 
             <div class="cta-buttons">
-                <a href="mailto:joe@approach-coach.com?subject=Approach App - שותפות מאמן" class="cta-button">
+                <a href="mailto:sales@approach-coach.com?subject=Approach App - שותפות מאמן" class="cta-button">
                     צור קשר!
                 </a>
                 <a href="https://calendar.app.google/pPFyGuG3b6bprs7q7" target="_blank" class="cta-secondary">
@@ -1507,9 +1550,9 @@
             </div>
 
             <div class="contact-info">
-                <a href="mailto:joe@approach-coach.com" class="contact-item">
+                <a href="mailto:info@approach-coach.com" class="contact-item">
                     <i class="fas fa-envelope" style="color: white; font-size: 2rem;"></i>
-                    joe@approach-coach.com
+                    info@approach-coach.com
                 </a>
                 <a href="https://www.instagram.com/approachcoachapp/" target="_blank" class="contact-item">
                     <i class="fab fa-instagram" style="color: #E4405F; font-size: 2rem;"></i>
@@ -1540,6 +1583,13 @@
                 <a href="/he/child-safety-policy.html"
                     style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">מדיניות בטיחות ילדים</a>
             </p>
+            <div class="personal-note">
+                <span class="personal-note-label">רוצים לדבר איתי אישית?</span>
+                <a href="mailto:joe@approach-coach.com" class="personal-note-link">
+                    <i class="fas fa-envelope"></i>
+                    joe@approach-coach.com
+                </a>
+            </div>
         </div>
     </footer>
 

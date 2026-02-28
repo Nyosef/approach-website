@@ -531,6 +531,46 @@
             opacity: 0.8;
         }
 
+        .personal-note {
+            margin: 12px auto 0;
+            padding: 10px 14px;
+            max-width: 520px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.62);
+            border: 1px solid rgba(77, 97, 245, 0.14);
+            box-shadow: 0 8px 18px rgba(77, 97, 245, 0.1);
+        }
+
+        .personal-note-label {
+            color: #4b4b5a;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .personal-note-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #4d61f5 0%, #5d72f7 100%);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(77, 97, 245, 0.16);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .personal-note-link:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 24px rgba(77, 97, 245, 0.24);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -584,6 +624,11 @@
 
             .social-label {
                 font-size: 1rem;
+            }
+
+            .personal-note {
+                width: 100%;
+                padding: 10px 12px;
             }
         }
 
@@ -873,12 +918,12 @@
                     <div class="social-handle">Approach Coach</div>
                 </a>
 
-                <a href="mailto:joe@approach-coach.com" class="social-item social-email">
+                <a href="mailto:info@approach-coach.com" class="social-item social-email">
                     <div class="social-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div class="social-label">Email</div>
-                    <div class="social-handle">joe@approach-coach.com</div>
+                    <div class="social-handle">info@approach-coach.com</div>
                 </a>
 
                 <a href="https://apps.apple.com/il/app/approach-coach/id6752607325" target="_blank"
@@ -906,6 +951,13 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Approach App. Transforming dating coaching through technology.</p>
+            <div class="personal-note">
+                <span class="personal-note-label">Want to speak to me personally?</span>
+                <a href="mailto:joe@approach-coach.com" class="personal-note-link">
+                    <i class="fas fa-envelope"></i>
+                    joe@approach-coach.com
+                </a>
+            </div>
         </div>
     </footer>
 

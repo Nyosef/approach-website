@@ -84,7 +84,7 @@ All pages include proper hreflang tags:
 - **Professional Hebrew**: All content translated to natural, professional Hebrew
 - **Cultural Adaptation**: Content adapted for Israeli/Hebrew-speaking audience
 - **Technical Terms**: English technical terms kept where appropriate (e.g., "App Store", "Google Play")
-- **Contact Information**: Maintained original contact details (joe@approach-coach.com)
+- **Contact Information**: Uses the shared inbox structure (for example, info@approach-coach.com)
 
 ### Key Translation Decisions
 - "Approach App" → "אפליקציית Approach" (keeping brand name in English)
@@ -318,7 +318,7 @@ font-family: 'Heebo', 'Inter', sans-serif;
 ```
 
 ### Contact Information
-For questions about this implementation, contact: joe@approach-coach.com
+For questions about this implementation, contact: info@approach-coach.com
 
 ---
 
