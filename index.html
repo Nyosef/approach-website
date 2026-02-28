@@ -949,6 +949,44 @@
             opacity: 0.7;
         }
 
+        .personal-note {
+            margin: 12px auto 0;
+            padding: 10px 14px;
+            max-width: 540px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .personal-note-label {
+            opacity: 0.88;
+            font-size: 0.88rem;
+        }
+
+        .personal-note-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255, 107, 53, 0.12);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .personal-note-link:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 107, 53, 0.24);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -993,6 +1031,11 @@
             .social-divider {
                 height: 25px;
                 margin: 0 8px;
+            }
+
+            .personal-note {
+                width: 100%;
+                padding: 10px 12px;
             }
         }
 
@@ -2786,7 +2829,7 @@
                         class="social-link social-linkedin">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="mailto:joe@approach-coach.com" aria-label="Email" class="social-link social-email">
+                    <a href="mailto:info@approach-coach.com" aria-label="Email" class="social-link social-email">
                         <i class="fas fa-envelope"></i>
                     </a>
 
@@ -2796,7 +2839,7 @@
                             <i class="fas fa-ellipsis-h"></i>
                         </button>
                         <div class="social-dropdown-menu">
-                            <a href="mailto:joe@approach-coach.com" aria-label="Email" class="dropdown-email">
+                            <a href="mailto:info@approach-coach.com" aria-label="Email" class="dropdown-email">
                                 <i class="fas fa-envelope"></i>
                                 <span>Email</span>
                             </a>
@@ -2853,7 +2896,7 @@
                 </div>
                 <p>Stop Losing Clients. Build Recurring Revenue With Your Own Branded App.</p>
                 <div class="cta-buttons">
-                    <a href="mailto:joe@approach-coach.com?subject=Approach Coach - Coach Interest" class="cta-button">
+                    <a href="mailto:sales@approach-coach.com?subject=Approach Coach - Coach Interest" class="cta-button">
                         Get in Touch!
                     </a>
                     <a href="https://calendar.app.google/pPFyGuG3b6bprs7q7" target="_blank" class="cta-secondary">
@@ -3068,7 +3111,7 @@
             <div class="contact-us-section">
                 <h3>Interested in having your type of coaching here as well?</h3>
                 <p>We're always expanding to support more coaching specialties. Let us know what you need!</p>
-                <a href="mailto:joe@approach-coach.com?subject=New Coaching Type Request" class="contact-us-button">
+                <a href="mailto:sales@approach-coach.com?subject=New Coaching Type Request" class="contact-us-button">
                     Contact Us Here
                 </a>
             </div>
@@ -3175,7 +3218,7 @@
                 in their clients' lives. The future of dating coaching is here.</p>
 
             <div class="cta-buttons">
-                <a href="mailto:joe@approach-coach.com?subject=Approach Coach - Coach Partnership" class="cta-button">
+                <a href="mailto:sales@approach-coach.com?subject=Approach Coach - Coach Partnership" class="cta-button">
                     Get in Touch!
                 </a>
                 <a href="https://calendar.app.google/pPFyGuG3b6bprs7q7" target="_blank" class="cta-secondary">
@@ -3184,9 +3227,9 @@
             </div>
 
             <div class="contact-info">
-                <a href="mailto:joe@approach-coach.com" class="contact-item">
+                <a href="mailto:info@approach-coach.com" class="contact-item">
                     <i class="fas fa-envelope" style="color: white; font-size: 2rem;"></i>
-                    joe@approach-coach.com
+                    info@approach-coach.com
                 </a>
                 <a href="https://www.instagram.com/approachcoachapp/" target="_blank" class="contact-item">
                     <i class="fab fa-instagram" style="color: #E4405F; font-size: 2rem;"></i>
@@ -3229,6 +3272,13 @@
                 <a href="child-safety-policy.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none;">Child
                     Safety Policy</a>
             </p>
+            <div class="personal-note">
+                <span class="personal-note-label">Want to speak to me personally?</span>
+                <a href="mailto:joe@approach-coach.com" class="personal-note-link">
+                    <i class="fas fa-envelope"></i>
+                    joe@approach-coach.com
+                </a>
+            </div>
         </div>
     </footer>
 

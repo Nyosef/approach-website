@@ -9,7 +9,7 @@ Create a comprehensive Terms of Service for the Approach App coaching platform t
 - **Payment**: Apple Store In-App Payments
 - **Features**: Support Hub, Training Modules, Communication, Journaling, Daily Inspirations
 - **Legal Framework**: Existing Privacy Policy and Child Safety Policy
-- **Contact**: joe@approach-coach.com (Triumph Joe)
+- **Contact**: office@approach-coach.com (Triumph Joe)
 
 ## Terms of Service Structure
 
@@ -17,7 +17,7 @@ Create a comprehensive Terms of Service for the Approach App coaching platform t
 - **Acceptance of Terms**: Binding agreement upon app usage
 - **Definitions**: Clear definitions of Platform, Services, Users, Coaches, Clients
 - **Modifications**: Right to update terms with notice
-- **Contact Information**: joe@approach-coach.com
+- **Contact Information**: office@approach-coach.com
 
 ### 2. Eligibility and Account Requirements
 - **Age Restriction**: 18+ only (consistent with Child Safety Policy)
@@ -113,7 +113,7 @@ Create a comprehensive Terms of Service for the Approach App coaching platform t
 - **Opt-out Options**: How to manage communications
 
 ### 14. Contact and Support
-- **Customer Support**: joe@approach-coach.com
+- **Customer Support**: support@approach-coach.com
 - **Legal Notices**: Formal communication procedures
 - **Business Information**: Company details and registration
 - **Response Times**: Expected support response timeframes

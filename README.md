@@ -53,7 +53,7 @@ Then visit `http://localhost:8000`
 
 ## Contact Information
 
-- Email: joe@approach-coach.com
+- Email: info@approach-coach.com
 - Instagram: @approachcoachapp
 - LinkedIn: Triumph Joe
 
