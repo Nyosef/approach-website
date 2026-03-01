@@ -27,6 +27,15 @@
         tr:last-child td { border-bottom: none; }
         .price { font-weight: 800; color: #ffccbc; }
         .note { margin-top: 14px; font-size: 0.93rem; opacity: 0.9; }
+        .section { margin-top: 20px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: 14px; padding: 18px; }
+        .section h2 { font-size: 1.2rem; margin-bottom: 10px; }
+        .section p { opacity: 0.93; }
+        .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); border-radius: 12px; padding: 14px; }
+        .card h3 { font-size: 1rem; margin-bottom: 8px; }
+        .faq-list { display: grid; gap: 12px; }
+        .faq-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); border-radius: 12px; padding: 14px; }
+        .faq-item h3 { font-size: 1rem; margin-bottom: 8px; }
         .actions { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; }
         .btn { text-decoration: none; color: #fff; padding: 10px 14px; border-radius: 10px; font-weight: 700; background: #ff6b35; }
         .btn.alt { background: rgba(255, 255, 255, 0.14); }
@@ -55,6 +64,47 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.approach-coach.com/"},
         {"@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://www.approach-coach.com/pricing/"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Approach Coach Platform",
+      "description": "White-label coaching apps for coaches and creators who want branded mobile products and recurring revenue.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Approach Coach"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Emerging Coach Launch",
+          "description": "Free launch path for coaches under 100K followers with up to 250 active subscribers.",
+          "priceCurrency": "USD",
+          "price": "0",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.approach-coach.com/pricing/"
+        },
+        {
+          "@type": "Offer",
+          "name": "Growth Coach Launch",
+          "description": "Free launch path for coaches growing toward 1,000 active subscribers.",
+          "priceCurrency": "USD",
+          "price": "0",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.approach-coach.com/pricing/"
+        },
+        {
+          "@type": "Offer",
+          "name": "Audience Scale Launch",
+          "description": "Free launch path with priority planning for high-audience coaches and larger rollouts.",
+          "priceCurrency": "USD",
+          "price": "0",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.approach-coach.com/pricing/"
+        }
       ]
     }
     </script>
@@ -120,6 +170,29 @@
         </table>
 
         <p class="note">Pricing policy may evolve later. As of now, all listed segments remain free for coaches.</p>
+
+        <section class="section">
+            <h2>Who This Pricing Is Built For</h2>
+            <p class="intro">Approach Coach is currently optimized for coaches and creators who already have an audience, a method, or paid guidance they want to turn into a stronger mobile product. The free launch structure reduces friction while the product and onboarding model continue to evolve.</p>
+        </section>
+
+        <section class="section">
+            <h2>Common Pricing Questions</h2>
+            <div class="faq-list">
+                <article class="faq-item">
+                    <h3>Is the platform really free right now?</h3>
+                    <p>Yes. The current launch offer is free across the listed audience and subscriber segments shown above.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>Why are there tiers if the price is still $0?</h3>
+                    <p>The tiers communicate delivery expectations, onboarding complexity, and the level of rollout support needed as audience size and subscriber volume increase.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>What happens if pricing changes later?</h3>
+                    <p>Any future paid structure would be communicated directly. This page reflects the current launch policy, not a permanent guarantee.</p>
+                </article>
+            </div>
+        </section>
 
         <div class="actions">
             <a class="btn" href="/demo/">See Demo Flow</a>
