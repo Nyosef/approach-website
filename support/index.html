@@ -22,8 +22,13 @@
         .card { background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.2); border-radius: 12px; padding: 14px; }
         .card h2 { font-size: 1.02rem; margin-bottom: 6px; }
         .card a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.35); }
-        .form-wrap { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); border-radius: 12px; padding: 16px; }
+        .form-wrap, .section { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); border-radius: 12px; padding: 16px; }
         .form-wrap h2 { font-size: 1.1rem; margin-bottom: 10px; }
+        .section { margin-bottom: 16px; }
+        .section h2 { font-size: 1.1rem; margin-bottom: 10px; }
+        .list { display: grid; gap: 10px; }
+        .list-item { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); border-radius: 10px; padding: 12px; }
+        .list-item h3 { font-size: 1rem; margin-bottom: 6px; }
         .field { display: grid; gap: 6px; margin-bottom: 10px; }
         label { font-size: .92rem; }
         input, textarea {
@@ -50,6 +55,38 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.approach-coach.com/"},
         {"@type": "ListItem", "position": 2, "name": "Support", "item": "https://www.approach-coach.com/support/"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I get started with Approach Coach?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contact Approach Coach to schedule a demo, review your coaching offer, and align the right launch path for your branded app."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What platforms do you support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Approach Coach is built around branded mobile app delivery for iOS and Android, with web support used for the marketing and onboarding experience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to launch my coaching app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Launch timing depends on content readiness and rollout complexity, but the process is designed to move quickly once the coaching offer and assets are aligned."
+          }
+        }
       ]
     }
     </script>
@@ -93,6 +130,24 @@
                 <h2>LinkedIn</h2>
                 <a target="_blank" href="https://www.linkedin.com/company/109572940">Approach Coach</a>
             </article>
+        </section>
+
+        <section class="section">
+            <h2>Quick Answers</h2>
+            <div class="list">
+                <article class="list-item">
+                    <h3>How do I get started?</h3>
+                    <p>Start with a demo or a direct message so the team can understand your coaching offer and recommend the right rollout path.</p>
+                </article>
+                <article class="list-item">
+                    <h3>Which devices are supported?</h3>
+                    <p>Approach Coach is positioned around branded iOS and Android app delivery for your clients.</p>
+                </article>
+                <article class="list-item">
+                    <h3>How long does launch take?</h3>
+                    <p>Launch time depends on your content readiness and customization needs, but the process is built to move quickly once assets are aligned.</p>
+                </article>
+            </div>
         </section>
 
         <section class="form-wrap">
